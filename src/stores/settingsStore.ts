@@ -19,7 +19,7 @@ interface SettingsStore extends SettingsState {
 const DEFAULT_SETTINGS: SettingsState = {
   theme: Theme.LIGHT,
   colorPrimary: "#bc4749",
-  language: Language.ARABIC,
+  language: Language.ENGLISH,
 };
 
 export const useSettingsStore = create<SettingsStore>()(

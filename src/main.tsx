@@ -12,9 +12,9 @@ import TasksManagerApp from "./app.tsx";
 import "antd/dist/reset.css";
 import { useSettingsStore } from "./stores";
 import { Theme, Language } from "./models";
-import "./i18n";
 import { Loader } from "./components/index.ts";
-import { useTranslation } from "react-i18next";
+import { I18nextProvider, useTranslation } from "react-i18next";
+import i18n from "./i18n";
 
 const HTML5toTouch = {
   backends: [
@@ -70,6 +70,8 @@ export function Root() {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <Root />
+    <I18nextProvider i18n={i18n}>
+      <Root />
+    </I18nextProvider>
   </StrictMode>,
 );
