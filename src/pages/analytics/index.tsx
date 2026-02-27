@@ -19,6 +19,7 @@ import { memo, useEffect } from "react";
 import { prioritiesMap, statusToColor, statusesMapper } from "@/utils";
 import { TaskPriority, TaskStatus, type Analytics } from "@/models";
 import { Loader } from "@/components";
+import { Link } from "react-router-dom";
 
 function Analytics() {
   const { t } = useTranslation();
@@ -68,42 +69,54 @@ function Analytics() {
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card>
-            <Statistic
-              title={t("analytics.completedTasks")}
-              value={analytics.statuses[TaskStatus.COMPLETED]}
-              prefix={<CheckCircleOutlined />}
-              styles={{
-                content: { color: statusToColor[TaskStatus.COMPLETED] },
-              }}
-            />
-          </Card>
+          <Link
+            to={`/?status=${TaskStatus.COMPLETED}`}
+            style={{ display: "block" }}
+          >
+            <Card hoverable>
+              <Statistic
+                title={t("analytics.completedTasks")}
+                value={analytics.statuses[TaskStatus.COMPLETED]}
+                prefix={<CheckCircleOutlined />}
+                styles={{
+                  content: { color: statusToColor[TaskStatus.COMPLETED] },
+                }}
+              />
+            </Card>
+          </Link>
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card>
-            <Statistic
-              title={t("analytics.inProgressTasks")}
-              value={analytics.statuses[TaskStatus.IN_PROGRESS]}
-              prefix={<SyncOutlined />}
-              styles={{
-                content: { color: statusToColor[TaskStatus.IN_PROGRESS] },
-              }}
-            />
-          </Card>
+          <Link
+            to={`/?status=${TaskStatus.IN_PROGRESS}`}
+            style={{ display: "block" }}
+          >
+            <Card hoverable>
+              <Statistic
+                title={t("analytics.inProgressTasks")}
+                value={analytics.statuses[TaskStatus.IN_PROGRESS]}
+                prefix={<SyncOutlined />}
+                styles={{
+                  content: { color: statusToColor[TaskStatus.IN_PROGRESS] },
+                }}
+              />
+            </Card>
+          </Link>
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Card>
-            <Statistic
-              title={t("analytics.overdueTasks")}
-              value={analytics.overdue}
-              prefix={<ClockCircleOutlined />}
-              styles={{
-                content: { color: "#ff4d4f" },
-              }}
-            />
-          </Card>
+          <Link to="/?isOverdue=true" style={{ display: "block" }}>
+            <Card hoverable>
+              <Statistic
+                title={t("analytics.overdueTasks")}
+                value={analytics.overdue}
+                prefix={<ClockCircleOutlined />}
+                styles={{
+                  content: { color: "#ff4d4f" },
+                }}
+              />
+            </Card>
+          </Link>
         </Col>
       </Row>
 
@@ -146,15 +159,33 @@ function TaskCard({ type, value }: TaskCardProps) {
       ? prioritiesMap[type as TaskPriority]
       : statusesMapper[type as TaskStatus];
 
-  return (
-    <Space align="center" className="w-full justify-between">
-      <Space>
-        <span style={{ color }}>{icon}</span>
-        <span style={{ color }}>{t(label)}</span>
-      </Space>
+  const isStatus = type in TaskStatus;
+  const filterUrl = isStatus ? `/?status=${type}` : `/?priority=${type}`;
 
-      <strong className="font-semibold">{value}</strong>
-    </Space>
+  return (
+    <Link to={filterUrl} style={{ display: "block", color: "inherit" }}>
+      <Space
+        align="center"
+        className="flex w-full justify-between p-2 rounded transition-colors"
+        style={{
+          cursor: "pointer",
+        }}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.backgroundColor =
+            "var(--ant-color-bg-text-hover)";
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.backgroundColor = "transparent";
+        }}
+      >
+        <Space>
+          <span style={{ color }}>{icon}</span>
+          <span style={{ color }}>{t(label)}</span>
+        </Space>
+
+        <strong className="font-semibold">{value}</strong>
+      </Space>
+    </Link>
   );
 }
 

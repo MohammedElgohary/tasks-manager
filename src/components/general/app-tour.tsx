@@ -75,11 +75,27 @@ export function AppTour({ onStartTour }: AppTourProps = {}) {
           ) as HTMLElement,
       },
       {
+        title: t("tour.taskCard.title"),
+        description: t("tour.taskCard.description"),
+        target: () =>
+          document.querySelector<HTMLElement>(
+            '[data-tour="task-card"]',
+          ) as HTMLElement,
+      },
+      {
         title: t("tour.dragDrop.title"),
         description: t("tour.dragDrop.description"),
         target: () =>
           document.querySelector<HTMLElement>(
             '[data-tour="task-card"]',
+          ) as HTMLElement,
+      },
+      {
+        title: t("tour.actions.title"),
+        description: t("tour.actions.description"),
+        target: () =>
+          document.querySelector<HTMLElement>(
+            '[data-tour="actions-dropdown"]',
           ) as HTMLElement,
       },
       {
@@ -89,6 +105,7 @@ export function AppTour({ onStartTour }: AppTourProps = {}) {
           document.querySelector<HTMLElement>(
             '[data-tour="settings-button"]',
           ) as HTMLElement,
+        placement: "bottomRight",
       },
     ],
     [t],
@@ -111,7 +128,11 @@ export function AppTour({ onStartTour }: AppTourProps = {}) {
         open={open}
         onClose={handleClose}
         steps={steps}
-        placement={"bottom"}
+        indicatorsRender={(current, total) => (
+          <span>
+            {current + 1} / {total}
+          </span>
+        )}
       />
     </>
   );

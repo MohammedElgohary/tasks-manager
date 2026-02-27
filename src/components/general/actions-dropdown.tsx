@@ -247,12 +247,17 @@ function ActionsDropdown() {
           size={isXs ? "middle" : "large"}
           icon={<DownOutlined />}
           iconPlacement="end"
+          data-tour="actions-dropdown"
         >
           {t("common.actions")}
         </Button>
       </Dropdown>
 
-      <SettingsModal open={isSettingsOpen} onClose={onCloseSettings} />
+      <SettingsModal
+        open={isSettingsOpen}
+        onClose={onCloseSettings}
+        data-tour="settings-button"
+      />
 
       <input
         ref={fileInputRef}

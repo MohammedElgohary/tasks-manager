@@ -31,9 +31,10 @@ Organize and prioritize your tasks effectively:
 Track your productivity with comprehensive analytics:
 
 - Task completion rates
-- Status distribution
-- Priority breakdown
-- Overdue task tracking
+- Status distribution (clickable to filter)
+- Priority breakdown (clickable to filter)
+- Overdue task tracking (clickable to filter)
+- Interactive statistics with URL-based filtering
 
 ### 🌍 Internationalization (i18n)
 
@@ -48,6 +49,7 @@ Personalize your experience:
 
 - Light and Dark themes
 - Customizable primary color
+- Responsive design for desktop and mobile
 
 ### 💾 Local Storage
 
@@ -71,10 +73,20 @@ Find tasks quickly with powerful filtering:
 - Filter by priority
 - Filter overdue tasks
 - URL persistence for shareable filtered views
+- Click analytics statistics to apply filters instantly
 
 ### 🎓 Interactive Tour
 
-Built-in guided tour to help new users get started quickly.
+Built-in guided tour to help new users get started quickly with step-by-step instructions.
+
+### 📱 Task Details
+
+Click on any task card to view comprehensive details:
+
+- Full description
+- Priority and status tags
+- Due date with overdue alerts
+- Creation and update timestamps
 
 ## Technologies
 
@@ -149,7 +161,13 @@ src/
 └── utils/           # Utility functions
 
 public/
-└── locales/         # Translation files
+├── locales/         # Translation files (runtime)
+│   ├── en/          # English translations
+│   └── ar/          # Arabic translations
+└── templates/       # Template files for import
+
+src/
+└── locales/         # Translation files (build-time)
     ├── en/          # English translations
     └── ar/          # Arabic translations
 ```
@@ -214,8 +232,9 @@ npm run lint
 
 ### Managing Tasks
 
-- **Edit**: Click on a task to view details and edit
-- **Delete**: Use the delete option in task actions
+- **View Details**: Click on any task card to view full details in a modal
+- **Edit**: Use the edit button on the task card or in the details modal
+- **Delete**: Use the delete button in task actions
 - **Change Status**: Drag and drop tasks between columns
 
 ### Filtering Tasks
@@ -235,11 +254,11 @@ Use the filter bar to:
 
 ### Settings
 
-Access settings to customize:
+Access settings via the settings button to customize:
 
 - Theme (Light/Dark)
-- Language (English/Arabic)
-- Primary Color
+- Language (English/Arabic with RTL support)
+- Primary Color (choose from preset colors or custom color you prefer)
 
 ## Browser Support
 
@@ -252,8 +271,8 @@ Modern browsers with ES6+ support:
 
 ## License
 
-This project is private and not licensed for public use.
+MIT License - see LICENSE file for details.
 
-## Contributing
+## Author
 
-This is a private project. Contributions are not currently accepted.
+Mohammed Samara El Gohary

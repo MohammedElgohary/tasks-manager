@@ -87,29 +87,40 @@
   },
   "tour": {
     "startTour": "Start Tour",
+    "next": "Next",
+    "prev": "Previous",
+    "finish": "Finish",
     "welcome": {
-      "title": "Welcome to Tasks List App!",
-      "description": "Let's take a quick tour to help you get started with managing your tasks efficiently."
+      "title": "Welcome to Task Manager! 👋",
+      "description": "Let's take a quick tour to show you how to manage your tasks efficiently. This will only take a minute!"
     },
     "newTask": {
-      "title": "Create New Tasks",
-      "description": "Click here to create a new task. You can add a title, description, priority, status, and due date."
+      "title": "Create Your First Task ✨",
+      "description": "Click here to create a new task. Add a title, description, set priority levels (Low to Critical), choose a status, and set due dates to stay organized."
     },
     "filters": {
-      "title": "Filter Your Tasks",
-      "description": "Use these filters to search and filter tasks by status, priority, or keywords."
+      "title": "Find Tasks Quickly 🔍",
+      "description": "Search by keywords, filter by status or priority, and clear filters with one click. Your filter settings are saved in the URL so you can bookmark and share filtered views."
     },
     "taskColumns": {
-      "title": "Task Columns",
-      "description": "Tasks are organized by status: On Hold, Pending, In Progress, and Completed."
+      "title": "Organized by Status 📋",
+      "description": "Your tasks are organized into four columns: On Hold (paused tasks), Pending (not started), In Progress (actively working), and Completed (finished tasks)."
+    },
+    "taskCard": {
+      "title": "View Full Details 📄",
+      "description": "Click on any task card to open a detailed view with the full description, priority tags, due date alerts, and creation/update timestamps."
     },
     "dragDrop": {
-      "title": "Drag and Drop",
-      "description": "You can drag tasks between columns to change their status quickly."
+      "title": "Drag & Drop to Update 🎯",
+      "description": "Simply drag any task card and drop it into a different column to instantly change its status. Works on both desktop and mobile devices!"
+    },
+    "actions": {
+      "title": "Import, Export & More 💾",
+      "description": "Access powerful features: export your tasks to JSON, import tasks from files (with validation), download a template, and open settings to customize your experience."
     },
     "settings": {
-      "title": "Customize Your Experience",
-      "description": "Access settings to change theme, language, primary color, and component size."
+      "title": "Customize Your Experience 🎨",
+      "description": "Switch between Light and Dark themes, change the interface language (English/Arabic with RTL support), and pick your favorite primary color."
     }
   },
   "analytics": {
@@ -121,12 +132,13 @@
     "overdueTasks": "Overdue",
     "completionRate": "Completion Rate",
     "tasksByStatus": "Tasks by Status",
-    "tasksByPriority": "Tasks by Priority"
+    "tasksByPriority": "Tasks by Priority",
+    "clickToFilter": "Click to filter tasks"
   },
   "importExport": {
-    "export": "Export",
-    "import": "Import",
-    "downloadTemplate": "Download Template",
+    "export": "Export Tasks to JSON",
+    "import": "Import Tasks from JSON",
+    "downloadTemplate": "Download Import Template",
     "noTasksToExport": "No tasks available to export",
     "exportSuccess": "Tasks exported successfully",
     "exportError": "Failed to export tasks",
