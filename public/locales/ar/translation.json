@@ -1,0 +1,205 @@
+{
+  "common": {
+    "cancel": "إلغاء",
+    "clear": "مسح",
+    "search": "بحث",
+    "settings": "الإعدادات",
+    "remove": "حذف",
+    "language": "اللغة",
+    "primaryColor": "اللون الأساسي",
+    "theme": "المظهر",
+    "actions": "الإجراءات"
+  },
+  "tasksList": {
+    "title": "قائمة المهام",
+    "newTask": "مهمة جديدة",
+    "tasks": "المهام",
+    "deleteSelected": "حذف المحدد",
+    "failedToFetch": "فشل في جلب المهام"
+  },
+  "task": {
+    "title": "العنوان",
+    "description": "الوصف",
+    "status": "الحالة",
+    "priority": "الأولوية",
+    "dueDate": "تاريخ الاستحقاق",
+    "createdAt": "تاريخ الإنشاء",
+    "updatedAt": "تاريخ التحديث",
+    "noDescription": "لا يوجد وصف",
+    "due": "الاستحقاق",
+    "created": "تم الإنشاء",
+    "updated": "تم التحديث",
+    "editTask": "تعديل المهمة",
+    "deleteTask": "حذف المهمة",
+    "overdue": "متأخر",
+    "dueToday": "مستحق اليوم",
+    "dueSoon": "مستحق قريباً",
+    "overdueBy": "متأخر بـ {{days}} يوم",
+    "dueInDays": "مستحق خلال {{days}} يوم",
+    "dueTodayDescription": "هذه المهمة مستحقة اليوم. أكملها في أقرب وقت ممكن!"
+  },
+  "taskModal": {
+    "createTitle": "إنشاء مهمة",
+    "editTitle": "تعديل المهمة",
+    "createButton": "إنشاء مهمة",
+    "updateButton": "تحديث المهمة",
+    "titleRequired": "العنوان مطلوب",
+    "titleMinLength": "يجب أن يكون العنوان 3 أحرف على الأقل",
+    "titleMaxLength": "يجب ألا يتجاوز العنوان 100 حرف",
+    "descriptionMaxLength": "يجب ألا يتجاوز الوصف 500 حرف",
+    "titlePlaceholder": "عنوان المهمة",
+    "descriptionPlaceholder": "وصف المهمة",
+    "statusPlaceholder": "حالة المهمة",
+    "priorityPlaceholder": "أولوية المهمة",
+    "dueDatePlaceholder": "تاريخ استحقاق المهمة",
+    "createSuccess": "تم إنشاء المهمة بنجاح",
+    "updateSuccess": "تم تحديث المهمة بنجاح",
+    "createError": "فشل في إنشاء المهمة",
+    "updateError": "فشل في تحديث المهمة"
+  },
+  "deleteModal": {
+    "title": "تأكيد حذف المهمة",
+    "content": "هل أنت متأكد من حذف هذه المهمة؟",
+    "success": "تم حذف المهمة بنجاح"
+  },
+  "theme": {
+    "light": "فاتح",
+    "dark": "داكن",
+    "switchToLight": "التبديل إلى الوضع الفاتح",
+    "switchToDark": "التبديل إلى الوضع الداكن"
+  },
+  "status": {
+    "ON_HOLD": "معلق",
+    "PENDING": "قيد الانتظار",
+    "IN_PROGRESS": "قيد التنفيذ",
+    "COMPLETED": "مكتمل"
+  },
+  "priority": {
+    "LOW": "منخفضة",
+    "MEDIUM": "متوسطة",
+    "HIGH": "عالية",
+    "CRITICAL": "حرجة"
+  },
+  "componentSize": {
+    "small": "صغير",
+    "medium": "متوسط",
+    "large": "كبير"
+  },
+  "tour": {
+    "startTour": "بدء الجولة",
+    "welcome": {
+      "title": "مرحباً بك في تطبيق قائمة المهام!",
+      "description": "دعنا نأخذ جولة سريعة لمساعدتك على البدء في إدارة مهامك بكفاءة."
+    },
+    "newTask": {
+      "title": "إنشاء مهام جديدة",
+      "description": "انقر هنا لإنشاء مهمة جديدة. يمكنك إضافة عنوان ووصف وأولوية وحالة وتاريخ استحقاق."
+    },
+    "filters": {
+      "title": "تصفية المهام",
+      "description": "استخدم هذه الفلاتر للبحث وتصفية المهام حسب الحالة أو الأولوية أو الكلمات المفتاحية."
+    },
+    "taskColumns": {
+      "title": "أعمدة المهام",
+      "description": "يتم تنظيم المهام حسب الحالة: معلق، قيد الانتظار، قيد التنفيذ، ومكتمل."
+    },
+    "dragDrop": {
+      "title": "السحب والإفلات",
+      "description": "يمكنك سحب المهام بين الأعمدة لتغيير حالتها بسرعة."
+    },
+    "settings": {
+      "title": "تخصيص تجربتك",
+      "description": "الوصول إلى الإعدادات لتغيير المظهر واللغة واللون الأساسي وحجم المكونات."
+    }
+  },
+  "analytics": {
+    "title": "لوحة التحليلات",
+    "noData": "لا توجد مهام متاحة للتحليل",
+    "totalTasks": "إجمالي المهام",
+    "completedTasks": "المكتملة",
+    "inProgressTasks": "قيد التنفيذ",
+    "overdueTasks": "المتأخرة",
+    "completionRate": "معدل الإنجاز",
+    "tasksByStatus": "المهام حسب الحالة",
+    "tasksByPriority": "المهام حسب الأولوية"
+  },
+  "importExport": {
+    "export": "تصدير",
+    "import": "استيراد",
+    "downloadTemplate": "تحميل القالب",
+    "noTasksToExport": "لا توجد مهام متاحة للتصدير",
+    "exportSuccess": "تم تصدير المهام بنجاح",
+    "exportError": "فشل في تصدير المهام",
+    "templateDownloadSuccess": "تم تحميل القالب بنجاح",
+    "templateDownloadError": "فشل في تحميل القالب",
+    "noTasksInFile": "لم يتم العثور على مهام في الملف",
+    "importConfirmTitle": "استيراد المهام",
+    "importConfirmContent": "تم العثور على {{count}} مهمة. اختر كيفية الاستيراد:",
+    "merge": "دمج (الاحتفاظ بالمهام الحالية)",
+    "replace": "استبدال (حذف المهام الحالية)",
+    "importMergeSuccess": "تم دمج المهام بنجاح",
+    "importReplaceSuccess": "تم استبدال المهام بنجاح",
+    "importError": "فشل في استيراد المهام",
+    "validationFailedTitle": "فشل التحقق من الاستيراد",
+    "validationFailedMessage": "تم العثور على {{errorCount}} خطأ في {{invalidCount}} من {{totalCount}} مهمة.",
+    "validationTaskFallback": "المهمة {{index}}",
+    "validationTaskError": "المهمة #{{index}} ({{title}}):\n{{errors}}"
+  },
+  "about": {
+    "title": "حول مدير المهام",
+    "description": "تطبيق حديث وغني بالميزات لإدارة المهام مبني بأحدث تقنيات الويب. قم بإدارة مهامك بكفاءة مع واجهة بديهية وميزات قوية ودعم كامل للعمل دون اتصال.",
+    "technologiesTitle": "التقنيات",
+    "featuresTitle": "الميزات",
+    "architectureTitle": "أبرز معالم البنية",
+    "features": {
+      "taskManagement": {
+        "title": "إدارة المهام",
+        "description": "إنشاء وتعديل وحذف المهام مع العنوان والوصف والأولوية والحالة وتواريخ الاستحقاق"
+      },
+      "dragDrop": {
+        "title": "السحب والإفلات",
+        "description": "واجهة سحب وإفلات بديهية لنقل المهام بين أعمدة الحالة (قيد الانتظار، قيد التنفيذ، معلق، مكتمل)"
+      },
+      "priorities": {
+        "title": "مستويات الأولوية",
+        "description": "تنظيم المهام حسب الأولوية: منخفضة، متوسطة، عالية، وحرجة"
+      },
+      "analytics": {
+        "title": "لوحة التحليلات",
+        "description": "تتبع معدلات إنجاز المهام وتوزيع الحالة وتفصيل الأولوية والمهام المتأخرة"
+      },
+      "i18n": {
+        "title": "التدويل",
+        "description": "دعم كامل للغة الإنجليزية والعربية مع تخطيط RTL للعربية"
+      },
+      "theming": {
+        "title": "السمات",
+        "description": "سمات فاتحة وداكنة مع لون أساسي قابل للتخصيص"
+      },
+      "localStorage": {
+        "title": "التخزين المحلي",
+        "description": "يتم تخزين جميع البيانات محلياً في متصفحك - لا حاجة لخادم"
+      },
+      "importExport": {
+        "title": "الاستيراد/التصدير",
+        "description": "تصدير المهام إلى JSON والاستيراد مع التحقق (أوضاع الدمج أو الاستبدال)"
+      },
+      "filters": {
+        "title": "الفلاتر المتقدمة",
+        "description": "تصفية المهام حسب البحث والحالة والأولوية وحالة التأخير مع الاحتفاظ بعنوان URL"
+      }
+    },
+    "architecture": {
+      "stateManagement": "إدارة الحالة:",
+      "stateManagementDesc": "Zustand لحالة عامة خفيفة وعالية الأداء مع الاستمرارية",
+      "routing": "التوجيه:",
+      "routingDesc": "React Router v7 للتنقل السلس",
+      "ui": "مكونات الواجهة:",
+      "uiDesc": "Ant Design لمكونات احترافية وسهلة الوصول مع Tailwind CSS للتصميم المخصص",
+      "dnd": "السحب والإفلات:",
+      "dndDesc": "React DnD مع دعم متعدد الخلفيات لأجهزة سطح المكتب والأجهزة المحمولة",
+      "validation": "التحقق من البيانات:",
+      "validationDesc": "التحقق الشامل من استيراد المهام مع تقارير أخطاء مفصلة"
+    }
+  }
+}

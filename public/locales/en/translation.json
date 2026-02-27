@@ -1,0 +1,205 @@
+{
+  "common": {
+    "cancel": "Cancel",
+    "clear": "Clear",
+    "search": "Search",
+    "settings": "Settings",
+    "remove": "Remove",
+    "language": "Language",
+    "primaryColor": "Primary Color",
+    "theme": "Theme",
+    "actions": "Actions"
+  },
+  "tasksList": {
+    "title": "Tasks List",
+    "newTask": "New Task",
+    "tasks": "Tasks",
+    "deleteSelected": "Delete Selected",
+    "failedToFetch": "Failed to fetch tasks"
+  },
+  "task": {
+    "title": "Title",
+    "description": "Description",
+    "status": "Status",
+    "priority": "Priority",
+    "dueDate": "Due Date",
+    "createdAt": "Created At",
+    "updatedAt": "Updated At",
+    "noDescription": "No description provided",
+    "due": "Due",
+    "created": "Created",
+    "updated": "Updated",
+    "editTask": "Edit Task",
+    "deleteTask": "Delete Task",
+    "overdue": "Overdue",
+    "dueToday": "Due Today",
+    "dueSoon": "Due Soon",
+    "overdueBy": "Overdue by {{days}} day(s)",
+    "dueInDays": "Due in {{days}} day(s)",
+    "dueTodayDescription": "This task is due today. Complete it as soon as possible!"
+  },
+  "taskModal": {
+    "createTitle": "Create Task",
+    "editTitle": "Edit Task",
+    "createButton": "Create Task",
+    "updateButton": "Update Task",
+    "titleRequired": "Title is required",
+    "titleMinLength": "Title must be at least 3 characters",
+    "titleMaxLength": "Title must not exceed 100 characters",
+    "descriptionMaxLength": "Description must not exceed 500 characters",
+    "titlePlaceholder": "Task Title",
+    "descriptionPlaceholder": "Task Description",
+    "statusPlaceholder": "Task Status",
+    "priorityPlaceholder": "Task Priority",
+    "dueDatePlaceholder": "Task Due Date",
+    "createSuccess": "Task created successfully",
+    "updateSuccess": "Task updated successfully",
+    "createError": "Failed to create task",
+    "updateError": "Failed to update task"
+  },
+  "deleteModal": {
+    "title": "Confirm Remove Task",
+    "content": "Are you sure you want to remove this task?",
+    "success": "Task removed successfully"
+  },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "switchToLight": "Switch to Light Mode",
+    "switchToDark": "Switch to Dark Mode"
+  },
+  "status": {
+    "ON_HOLD": "On Hold",
+    "PENDING": "Pending",
+    "IN_PROGRESS": "In Progress",
+    "COMPLETED": "Completed"
+  },
+  "priority": {
+    "LOW": "Low",
+    "MEDIUM": "Medium",
+    "HIGH": "High",
+    "CRITICAL": "Critical"
+  },
+  "componentSize": {
+    "small": "Small",
+    "medium": "Medium",
+    "large": "Large"
+  },
+  "tour": {
+    "startTour": "Start Tour",
+    "welcome": {
+      "title": "Welcome to Tasks List App!",
+      "description": "Let's take a quick tour to help you get started with managing your tasks efficiently."
+    },
+    "newTask": {
+      "title": "Create New Tasks",
+      "description": "Click here to create a new task. You can add a title, description, priority, status, and due date."
+    },
+    "filters": {
+      "title": "Filter Your Tasks",
+      "description": "Use these filters to search and filter tasks by status, priority, or keywords."
+    },
+    "taskColumns": {
+      "title": "Task Columns",
+      "description": "Tasks are organized by status: On Hold, Pending, In Progress, and Completed."
+    },
+    "dragDrop": {
+      "title": "Drag and Drop",
+      "description": "You can drag tasks between columns to change their status quickly."
+    },
+    "settings": {
+      "title": "Customize Your Experience",
+      "description": "Access settings to change theme, language, primary color, and component size."
+    }
+  },
+  "analytics": {
+    "title": "Analytics Dashboard",
+    "noData": "No tasks available for analytics",
+    "totalTasks": "Total Tasks",
+    "completedTasks": "Completed",
+    "inProgressTasks": "In Progress",
+    "overdueTasks": "Overdue",
+    "completionRate": "Completion Rate",
+    "tasksByStatus": "Tasks by Status",
+    "tasksByPriority": "Tasks by Priority"
+  },
+  "importExport": {
+    "export": "Export",
+    "import": "Import",
+    "downloadTemplate": "Download Template",
+    "noTasksToExport": "No tasks available to export",
+    "exportSuccess": "Tasks exported successfully",
+    "exportError": "Failed to export tasks",
+    "templateDownloadSuccess": "Template downloaded successfully",
+    "templateDownloadError": "Failed to download template",
+    "noTasksInFile": "No tasks found in the file",
+    "importConfirmTitle": "Import Tasks",
+    "importConfirmContent": "Found {{count}} task(s). Choose how to import:",
+    "merge": "Merge (Keep existing tasks)",
+    "replace": "Replace (Delete existing tasks)",
+    "importMergeSuccess": "Tasks merged successfully",
+    "importReplaceSuccess": "Tasks replaced successfully",
+    "importError": "Failed to import tasks",
+    "validationFailedTitle": "Import Validation Failed",
+    "validationFailedMessage": "Found {{errorCount}} error(s) in {{invalidCount}} of {{totalCount}} task(s).",
+    "validationTaskFallback": "Task {{index}}",
+    "validationTaskError": "Task #{{index}} ({{title}}):\n{{errors}}"
+  },
+  "about": {
+    "title": "About Task Manager",
+    "description": "A modern, feature-rich task management application built with cutting-edge web technologies. Manage your tasks efficiently with an intuitive interface, powerful features, and full offline support.",
+    "technologiesTitle": "Technologies",
+    "featuresTitle": "Features",
+    "architectureTitle": "Architecture Highlights",
+    "features": {
+      "taskManagement": {
+        "title": "Task Management",
+        "description": "Create, edit, and delete tasks with title, description, priority, status, and due dates"
+      },
+      "dragDrop": {
+        "title": "Drag & Drop",
+        "description": "Intuitive drag-and-drop interface to move tasks between status columns (Pending, In Progress, On Hold, Completed)"
+      },
+      "priorities": {
+        "title": "Priority Levels",
+        "description": "Organize tasks by priority: Low, Medium, High, and Critical"
+      },
+      "analytics": {
+        "title": "Analytics Dashboard",
+        "description": "Track task completion rates, status distribution, priority breakdown, and overdue tasks"
+      },
+      "i18n": {
+        "title": "Internationalization",
+        "description": "Full support for English and Arabic with RTL layout for Arabic"
+      },
+      "theming": {
+        "title": "Theming",
+        "description": "Light and dark themes with customizable primary color"
+      },
+      "localStorage": {
+        "title": "Local Storage",
+        "description": "All data is stored locally in your browser - no server required"
+      },
+      "importExport": {
+        "title": "Import/Export",
+        "description": "Export tasks to JSON and import with validation (merge or replace modes)"
+      },
+      "filters": {
+        "title": "Advanced Filters",
+        "description": "Filter tasks by search, status, priority, and overdue status with URL persistence"
+      }
+    },
+    "architecture": {
+      "stateManagement": "State Management:",
+      "stateManagementDesc": "Zustand for lightweight, performant global state with persistence",
+      "routing": "Routing:",
+      "routingDesc": "React Router v7 for seamless navigation",
+      "ui": "UI Components:",
+      "uiDesc": "Ant Design for professional, accessible components with Tailwind CSS for custom styling",
+      "dnd": "Drag & Drop:",
+      "dndDesc": "React DnD with multi-backend support for desktop and mobile devices",
+      "validation": "Data Validation:",
+      "validationDesc": "Comprehensive validation for task imports with detailed error reporting"
+    }
+  }
+}
