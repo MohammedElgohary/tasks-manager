@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { memo, Suspense, useTransition } from "react";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { Menu } from "antd";
 import {
@@ -9,8 +9,9 @@ import {
 import { useTranslation } from "react-i18next";
 import { Loader } from "@/components";
 
-export function Layout() {
+function Layout() {
   const { t } = useTranslation();
+  const [isPending, startTransition] = useTransition();
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -21,31 +22,39 @@ export function Layout() {
       <Menu
         mode="horizontal"
         selectedKeys={[currentPath]}
+        className="fixed-menu"
         items={[
           {
             key: "",
             icon: <UnorderedListOutlined />,
             label: t("tasksList.title"),
-            onClick: () => navigate("/"),
+            disabled: isPending,
+            onClick: () => startTransition(() => navigate("/")),
           },
           {
             key: "analytics",
             icon: <BarChartOutlined />,
             label: t("analytics.title"),
-            onClick: () => navigate("/analytics"),
+            disabled: isPending,
+            onClick: () => startTransition(() => navigate("/analytics")),
           },
           {
             key: "about",
             icon: <InfoCircleOutlined />,
             label: t("about.title"),
-            onClick: () => navigate("/about"),
+            disabled: isPending,
+            onClick: () => startTransition(() => navigate("/about")),
           },
         ]}
       />
 
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
+      <div className="content-with-fixed-menu">
+        <Suspense fallback={<Loader />}>
+          <Outlet />
+        </Suspense>
+      </div>
     </>
   );
 }
+
+export default memo(Layout);

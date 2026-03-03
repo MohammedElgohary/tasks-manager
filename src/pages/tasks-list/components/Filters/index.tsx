@@ -8,8 +8,9 @@ import { useTasksUrlFilters } from "@/hooks";
 export function Filters() {
   const { t } = useTranslation();
 
-  const changeFilters = useTasksStore((state) => state.changeFilters);
   const filters = useTasksStore((state) => state.filters);
+  const changeFilters = useTasksStore((state) => state.changeFilters);
+  const changeSearch = useTasksStore((state) => state.changeSearch);
 
   useTasksUrlFilters();
 
@@ -19,12 +20,7 @@ export function Filters() {
         <Input.Search
           placeholder={t("common.search")}
           value={filters.search}
-          onChange={(event) =>
-            changeFilters({
-              ...filters,
-              search: event.target.value || undefined,
-            })
-          }
+          onChange={(event) => changeSearch(event.target.value || undefined)}
           className="flex-5 min-w-[250px]"
         />
 

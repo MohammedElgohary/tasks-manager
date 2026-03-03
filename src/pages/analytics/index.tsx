@@ -1,13 +1,4 @@
-import {
-  Card,
-  Col,
-  Row,
-  Statistic,
-  Progress,
-  Empty,
-  Space,
-  Typography,
-} from "antd";
+import { Card, Col, Row, Statistic, Progress, Empty, Typography } from "antd";
 import {
   CheckCircleOutlined,
   ClockCircleOutlined,
@@ -16,10 +7,11 @@ import {
 import { useTranslation } from "react-i18next";
 import { useAnalyticsStore, useSettingsStore } from "@/stores";
 import { memo, useEffect } from "react";
-import { prioritiesMap, statusToColor, statusesMapper } from "@/utils";
-import { TaskPriority, TaskStatus, type Analytics } from "@/models";
+import { statusToColor } from "@/utils";
+import { TaskStatus } from "@/models";
 import { Loader } from "@/components";
 import { Link } from "react-router-dom";
+import { StatusTaskCard, PriorityTaskCard } from "./components";
 
 function Analytics() {
   const { t } = useTranslation();
@@ -32,7 +24,13 @@ function Analytics() {
   );
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     void fetchAnalytics();
+
+    return () => {
+      abortController.abort();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -147,86 +145,3 @@ function Analytics() {
 }
 
 export default memo(Analytics);
-
-interface TaskCardProps {
-  type: TaskPriority | TaskStatus;
-  value: number;
-}
-function TaskCard({ type, value }: TaskCardProps) {
-  const { t } = useTranslation();
-  const { icon, color, label } =
-    type in prioritiesMap
-      ? prioritiesMap[type as TaskPriority]
-      : statusesMapper[type as TaskStatus];
-
-  const isStatus = type in TaskStatus;
-  const filterUrl = isStatus ? `/?status=${type}` : `/?priority=${type}`;
-
-  return (
-    <Link to={filterUrl} style={{ display: "block", color: "inherit" }}>
-      <Space
-        align="center"
-        className="flex w-full justify-between p-2 rounded transition-colors"
-        style={{
-          cursor: "pointer",
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.backgroundColor =
-            "var(--ant-color-bg-text-hover)";
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.backgroundColor = "transparent";
-        }}
-      >
-        <Space>
-          <span style={{ color }}>{icon}</span>
-          <span style={{ color }}>{t(label)}</span>
-        </Space>
-
-        <strong className="font-semibold">{value}</strong>
-      </Space>
-    </Link>
-  );
-}
-
-interface StatusTaskCardProps {
-  analytics: Analytics;
-}
-function StatusTaskCard({ analytics }: StatusTaskCardProps) {
-  const { t } = useTranslation();
-
-  return (
-    <Card title={t("analytics.tasksByStatus")}>
-      <Space vertical className="w-full">
-        {Object.values(TaskStatus).map((status) => (
-          <TaskCard
-            key={status}
-            type={status}
-            value={analytics.statuses[status]}
-          />
-        ))}
-      </Space>
-    </Card>
-  );
-}
-
-interface PriorityTaskCardProps {
-  analytics: Analytics;
-}
-function PriorityTaskCard({ analytics }: PriorityTaskCardProps) {
-  const { t } = useTranslation();
-
-  return (
-    <Card title={t("analytics.tasksByPriority")}>
-      <Space vertical className="w-full">
-        {Object.values(TaskPriority).map((priority) => (
-          <TaskCard
-            key={priority}
-            type={priority}
-            value={analytics.priorities[priority]}
-          />
-        ))}
-      </Space>
-    </Card>
-  );
-}

@@ -1,6 +1,7 @@
 import { useSettingsStore } from "@/stores";
 import { Flex, Input } from "antd";
 import { SettingOutlined } from "@ant-design/icons";
+import { useMemo } from "react";
 
 const colorOptions = ["#bc4749", "#a53860", "#3a6ea5", "#722ED1"] as const;
 const outlineColors = {
@@ -14,16 +15,22 @@ export function PrimaryColor() {
   const colorPrimary = useSettingsStore((state) => state.colorPrimary);
   const changeColorPrimary = useSettingsStore((state) => state.setColorPrimary);
 
-  return (
-    <Flex align="center" gap="small" justify="space-between">
-      {colorOptions.map((color) => (
+  const colorButtons = useMemo(
+    () =>
+      colorOptions.map((color) => (
         <ColorButton
           key={color}
           color={color}
           isSelected={colorPrimary === color}
           onClick={() => changeColorPrimary(color)}
         />
-      ))}
+      )),
+    [colorPrimary, changeColorPrimary],
+  );
+
+  return (
+    <Flex align="center" gap="small" justify="space-between">
+      {colorButtons}
 
       <label
         htmlFor="primary-color-input"

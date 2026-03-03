@@ -10,9 +10,9 @@ import {
 } from "@ant-design/icons";
 
 export const statusToColor: Record<TaskStatus, string> = {
-  [TaskStatus.ON_HOLD]: "#6c757d",
-  [TaskStatus.PENDING]: "#ffc107",
-  [TaskStatus.IN_PROGRESS]: "#1890ff",
+  [TaskStatus.ON_HOLD]: "#8b8b8b",
+  [TaskStatus.PENDING]: "#faad14",
+  [TaskStatus.IN_PROGRESS]: "#1677ff",
   [TaskStatus.COMPLETED]: "#52c41a",
 };
 
@@ -24,10 +24,10 @@ export const statusToIcon: Record<TaskStatus, React.ReactNode> = {
 };
 
 export const priorityToColor: Record<TaskPriority, string> = {
-  [TaskPriority.LOW]: "#6c757d80",
-  [TaskPriority.MEDIUM]: "#f39c12",
-  [TaskPriority.HIGH]: "#fa8c16",
-  [TaskPriority.CRITICAL]: "#f5222d",
+  [TaskPriority.LOW]: "#95de64",
+  [TaskPriority.MEDIUM]: "#ffd666",
+  [TaskPriority.HIGH]: "#ff9c6e",
+  [TaskPriority.CRITICAL]: "#ff4d4f",
 };
 
 export const priorityToIcon: Record<TaskPriority, React.ReactNode> = {

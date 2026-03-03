@@ -8,7 +8,7 @@ import {
   ActionsDropdown,
 } from "@/components";
 import { useTasksStore } from "@/stores";
-import { memo, useEffect } from "react";
+import { memo, useEffect, useMemo } from "react";
 
 const { useBreakpoint } = Grid;
 
@@ -21,7 +21,13 @@ function TasksListPage() {
   const fetchTasks = useTasksStore((state) => state.fetchTasks);
 
   useEffect(() => {
+    const abortController = new AbortController();
+
     void fetchTasks();
+
+    return () => {
+      abortController.abort();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -33,13 +39,21 @@ function TasksListPage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
-  // Responsive breakpoints
-  const isXs = screens.xs && !screens.sm;
-  const isSm = screens.sm && !screens.md;
-  const isMd = screens.md && !screens.lg;
+  // Memoize responsive breakpoints
+  const { isXs, isSm, isMd } = useMemo(
+    () => ({
+      isXs: screens.xs && !screens.sm,
+      isSm: screens.sm && !screens.md,
+      isMd: screens.md && !screens.lg,
+    }),
+    [screens.xs, screens.sm, screens.md, screens.lg],
+  );
 
   // Gradual title size scale
-  const titleLevel = isXs ? 4 : isSm ? 3 : isMd ? 2 : 1;
+  const titleLevel = useMemo(
+    () => (isXs ? 4 : isSm ? 3 : isMd ? 2 : 1),
+    [isMd, isSm, isXs],
+  );
 
   return (
     <Flex vertical className="gap-4 page">

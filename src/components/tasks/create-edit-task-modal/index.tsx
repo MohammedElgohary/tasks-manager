@@ -1,4 +1,12 @@
-import { cloneElement, useId, useState, useEffect, memo } from "react";
+import {
+  cloneElement,
+  useId,
+  useState,
+  useEffect,
+  memo,
+  lazy,
+  Suspense,
+} from "react";
 import { Button, DatePicker, Flex, Form, Input, Modal, App } from "antd";
 import { TaskPriority, TaskStatus } from "@/models";
 import { requestAddTask, requestUpdateTask } from "@/network";
@@ -11,6 +19,10 @@ import dayjs from "dayjs";
 import { PrioritySelect, StatusSelect } from "@/components";
 import { useTranslation } from "react-i18next";
 import { useTasksStore } from "@/stores";
+
+const CreateEditTaskModal = lazy(() =>
+  Promise.resolve({ default: CreateEditTaskModalComponent }),
+);
 
 function CreateEditTaskButton({
   trigger,
@@ -31,15 +43,17 @@ function CreateEditTaskButton({
       })}
 
       {open && (
-        <CreateEditTaskModal
-          open={open}
-          onClose={() => setOpen(false)}
-          onSuccess={() => {
-            refresh();
-            setOpen(false);
-          }}
-          initialValues={initialValues}
-        />
+        <Suspense fallback={null}>
+          <CreateEditTaskModal
+            open={open}
+            onClose={() => setOpen(false)}
+            onSuccess={() => {
+              refresh();
+              setOpen(false);
+            }}
+            initialValues={initialValues}
+          />
+        </Suspense>
       )}
     </>
   );
@@ -55,7 +69,7 @@ const INITIAL_VALUES: FormValues = {
   dueDate: null,
 };
 
-function CreateEditTaskModal({
+function CreateEditTaskModalComponent({
   open,
   onClose,
   onSuccess,

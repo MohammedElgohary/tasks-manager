@@ -1,9 +1,9 @@
 import { Card, List, theme, Grid } from "antd";
 import { StatusBadge, Task as TaskComponent } from "@/components";
-import type { TaskStatus } from "@/models";
+import type { Task, TaskStatus } from "@/models";
 import { useDropTask } from "@/hooks";
 import { requestChangeTaskStatus } from "@/network";
-import { useMemo, type Ref, memo } from "react";
+import { useCallback, type Ref, memo } from "react";
 import { useTasksStore } from "@/stores";
 
 const { useBreakpoint } = Grid;
@@ -11,6 +11,28 @@ const { useBreakpoint } = Grid;
 interface ColumnProps {
   status: TaskStatus;
 }
+
+const TaskListItem = memo(
+  ({
+    task,
+    index,
+    isMobile,
+  }: {
+    task: Task;
+    index: number;
+    isMobile: boolean;
+  }) => (
+    <List.Item
+      className={
+        isMobile
+          ? "!p-0 my-2 last:!mb-0 first:!mt-0"
+          : "!p-0 my-3 last:!mb-0 first:!mt-0"
+      }
+    >
+      <TaskComponent task={task} index={index} />
+    </List.Item>
+  ),
+);
 
 function Column({ status }: ColumnProps) {
   const tasks = useTasksStore((state) => state.tasks);
@@ -22,42 +44,39 @@ function Column({ status }: ColumnProps) {
   const { token } = theme.useToken();
   const screens = useBreakpoint();
 
-  const { isOver, canDrop, dropRef } = useDropTask({
-    status,
-    onDropTask: (draggedId, newStatus) => {
+  const onDropTask = useCallback(
+    (draggedId: string, newStatus: TaskStatus) => {
       requestChangeTaskStatus(draggedId, newStatus)
         .then(refreshTasks)
         .catch(console.error);
     },
+    [refreshTasks],
+  );
+
+  const { isOver, canDrop, dropRef } = useDropTask({
+    status,
+    onDropTask,
   });
 
   const isActive = isOver && canDrop;
   const isMobile = !screens.md;
 
-  const ListComponent = useMemo(
-    () => (
+  const renderItem = useCallback(
+    (task: Task, index: number) => (
+      <TaskListItem task={task} index={index} isMobile={isMobile} />
+    ),
+    [isMobile],
+  );
+
+  if (isMobile) {
+    return (
       <List
         dataSource={filteredTasks}
         split={false}
         loading={isLoading}
-        renderItem={(task, index) => (
-          <List.Item
-            className={
-              isMobile
-                ? "!p-0 my-2 last:!mb-0 first:!mt-0"
-                : "!p-0 my-3 last:!mb-0 first:!mt-0"
-            }
-          >
-            <TaskComponent task={task} index={index} />
-          </List.Item>
-        )}
+        renderItem={renderItem}
       />
-    ),
-    [filteredTasks, isLoading, isMobile],
-  );
-
-  if (isMobile) {
-    return ListComponent;
+    );
   }
 
   return (
@@ -66,8 +85,8 @@ function Column({ status }: ColumnProps) {
       className="h-full w-full flex"
     >
       <Card
-        size={isMobile ? "small" : "default"}
-        title={<StatusBadge target={status} showText={!isMobile} />}
+        size="default"
+        title={<StatusBadge target={status} showText />}
         style={{
           backgroundColor: isActive ? token.colorPrimaryBg : undefined,
           transition: "background-color 0.2s ease",
@@ -75,7 +94,12 @@ function Column({ status }: ColumnProps) {
         className="h-full w-full flex flex-col"
         classNames={{ body: "flex-1 overflow-auto" }}
       >
-        {ListComponent}
+        <List
+          dataSource={filteredTasks}
+          split={false}
+          loading={isLoading}
+          renderItem={renderItem}
+        />
       </Card>
     </div>
   );

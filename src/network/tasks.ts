@@ -16,14 +16,13 @@ type RequestGetTasksArgs = {
   status?: TaskStatus;
   priority?: TaskPriority;
   isOverdue?: boolean;
+  signal?: AbortSignal;
 };
 
-export async function requestGetTasks({
-  search,
-  status,
-  priority,
-  isOverdue,
-}: RequestGetTasksArgs): Promise<Array<Task>> {
+export async function requestGetTasks(
+  { search, status, priority, isOverdue }: RequestGetTasksArgs,
+  signal?: AbortSignal,
+): Promise<Array<Task>> {
   await sleepRandom();
 
   let tasks = db.getTasks();
@@ -58,7 +57,10 @@ export async function requestGetTasks({
 //#endregion get tasks list
 
 //#region add task
-export async function requestAddTask(task: TaskInput): Promise<void> {
+export async function requestAddTask(
+  task: TaskInput,
+  signal?: AbortSignal,
+): Promise<void> {
   await sleepRandom();
 
   db.addTask(task);
@@ -69,6 +71,7 @@ export async function requestAddTask(task: TaskInput): Promise<void> {
 export async function requestUpdateTask(
   id: string,
   task: TaskInput,
+  signal?: AbortSignal,
 ): Promise<void> {
   await sleepRandom();
 
@@ -77,7 +80,10 @@ export async function requestUpdateTask(
 //#endregion update task
 
 //#region delete task
-export async function requestDeleteTask(id: string): Promise<void> {
+export async function requestDeleteTask(
+  id: string,
+  signal?: AbortSignal,
+): Promise<void> {
   await sleepRandom();
 
   db.deleteTask(id);
@@ -88,6 +94,7 @@ export async function requestDeleteTask(id: string): Promise<void> {
 export async function requestChangeTaskStatus(
   taskId: string,
   newStatus: TaskStatus,
+  signal?: AbortSignal,
 ): Promise<void> {
   await sleepRandom();
 
@@ -96,7 +103,9 @@ export async function requestChangeTaskStatus(
 //#endregion change task status
 
 //#region get analytics
-export async function requestGetAnalytics(): Promise<Analytics> {
+export async function requestGetAnalytics(
+  signal?: AbortSignal,
+): Promise<Analytics> {
   await sleepRandom();
 
   return db.getAnalytics();
@@ -107,6 +116,7 @@ export async function requestGetAnalytics(): Promise<Analytics> {
 export async function requestImportTasks(
   tasks: Task[],
   mode: ImportMode,
+  signal?: AbortSignal,
 ): Promise<void> {
   await sleepRandom();
 

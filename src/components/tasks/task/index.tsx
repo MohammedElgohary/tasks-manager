@@ -12,7 +12,7 @@ import { EditOutlined, HolderOutlined } from "@ant-design/icons";
 import { CreateEditTaskButton } from "@/components";
 import { useDragTask } from "@/hooks";
 import type { Task } from "@/models";
-import { type Ref, useState, memo } from "react";
+import { type Ref, useState, memo, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import TaskDetailsModal from "./task-details-modal";
 import { formatDate, formatDueDate, prioritiesMap } from "@/utils";
@@ -34,16 +34,24 @@ function Task({ task, index }: TaskProps) {
   const { token } = theme.useToken();
   const { isDragging, dragRef } = useDragTask(task, index);
 
-  // Responsive breakpoints
-  const isXs = screens.xs && !screens.sm;
-  const isSm = screens.sm && !screens.md;
-  const isMd = screens.md && !screens.lg;
+  // Memoize responsive breakpoints and derived values
+  const { isXs, isSm, isMd, padding } = useMemo(() => {
+    const isXs = screens.xs && !screens.sm;
+    const isSm = screens.sm && !screens.md;
+    const isMd = screens.md && !screens.lg;
+    const padding = isXs ? 12 : isSm ? 16 : isMd ? 18 : 20;
+    return { isXs, isSm, isMd, padding };
+  }, [screens.xs, screens.sm, screens.md, screens.lg]);
 
-  const dueDateFormat = formatDueDate(task.dueDate, task.status);
-  const priorityConfig = prioritiesMap[task.priority];
+  const dueDateFormat = useMemo(
+    () => formatDueDate(task.dueDate, task.status),
+    [task.dueDate, task.status],
+  );
 
-  // Dynamic spacing scale
-  const padding = isXs ? 12 : isSm ? 16 : isMd ? 18 : 20;
+  const priorityConfig = useMemo(
+    () => prioritiesMap[task.priority],
+    [task.priority],
+  );
 
   return (
     <>

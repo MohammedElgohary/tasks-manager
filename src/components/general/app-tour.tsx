@@ -43,6 +43,7 @@ export function AppTour({ onStartTour }: AppTourProps = {}) {
   }
 
   // Use useMemo to recalculate steps when language changes
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const steps: TourProps["steps"] = useMemo(
     () => [
       {
@@ -108,8 +109,26 @@ export function AppTour({ onStartTour }: AppTourProps = {}) {
         placement: "bottomRight",
       },
     ],
-    [t],
+    [],
   );
+
+  function handleStepChange(current: number) {
+    // Scroll to element with offset for fixed menu
+    const step = steps?.[current];
+    if (step && typeof step.target === "function") {
+      const element = step.target();
+      if (element) {
+        const elementRect = element.getBoundingClientRect();
+        const offset = 80; // Fixed menu height + some padding
+        const scrollTop = window.pageYOffset + elementRect.top - offset;
+
+        window.scrollTo({
+          top: scrollTop,
+          behavior: "smooth",
+        });
+      }
+    }
+  }
 
   const isXs = screens.xs && !screens.sm;
 
@@ -128,6 +147,7 @@ export function AppTour({ onStartTour }: AppTourProps = {}) {
         open={open}
         onClose={handleClose}
         steps={steps}
+        onChange={handleStepChange}
         indicatorsRender={(current, total) => (
           <span>
             {current + 1} / {total}

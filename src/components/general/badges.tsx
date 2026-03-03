@@ -6,7 +6,7 @@ import {
   statusToIcon,
 } from "@/utils";
 import { Space, Typography } from "antd";
-import { cloneElement } from "react";
+import { cloneElement, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 
 interface BaseBadgeProps<T extends TaskStatus | TaskPriority> {
@@ -26,13 +26,17 @@ function BaseBadge<T extends TaskStatus | TaskPriority>({
 }: BaseBadgeProps<T>) {
   const { t } = useTranslation();
 
-  const iconElement = cloneElement(
-    icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
-    {
-      style: {
-        color: source[target],
-      },
-    } as React.SVGProps<SVGSVGElement>,
+  const iconElement = useMemo(
+    () =>
+      cloneElement(
+        icon as React.ReactElement<React.SVGProps<SVGSVGElement>>,
+        {
+          style: {
+            color: source[target],
+          },
+        } as React.SVGProps<SVGSVGElement>,
+      ),
+    [icon, source, target],
   );
 
   return showText ? (
