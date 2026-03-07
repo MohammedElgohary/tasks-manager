@@ -1,12 +1,10 @@
-import type { TaskStatus } from "@/models";
-import { useTasksStore } from "@/stores";
-import { useEffect, useState } from "react";
+import type { TaskStatus } from '@/models';
+import { useTasksStore } from '@/stores';
+import { useEffect, useState } from 'react';
 
 export function useActiveTab() {
   const filters = useTasksStore((store) => store.filters);
-  const [activeTab, setActiveTab] = useState<TaskStatus | undefined>(
-    filters.status,
-  );
+  const [activeTab, setActiveTab] = useState<TaskStatus | undefined>(filters.status);
 
   useEffect(() => {
     if (!filters.status) return;

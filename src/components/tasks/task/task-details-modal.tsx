@@ -1,15 +1,6 @@
-import {
-  Modal,
-  Typography,
-  Tag,
-  Descriptions,
-  Divider,
-  Flex,
-  Space,
-  Alert,
-} from "antd";
-import { CalendarOutlined, ClockCircleOutlined } from "@ant-design/icons";
-import type { Task } from "@/models";
+import { Modal, Typography, Tag, Descriptions, Divider, Flex, Space, Alert } from 'antd';
+import { CalendarOutlined, ClockCircleOutlined } from '@ant-design/icons';
+import type { Task } from '@/models';
 import {
   formatDate,
   formatDateTime,
@@ -17,9 +8,9 @@ import {
   prioritiesMap,
   statusToColor,
   statusToIcon,
-} from "@/utils";
-import { useTranslation } from "react-i18next";
-import { memo } from "react";
+} from '@/utils';
+import { useTranslation } from 'react-i18next';
+import { memo } from 'react';
 
 interface TaskDetailsModalProps {
   open: boolean;
@@ -49,10 +40,7 @@ function TaskDetailsModal({ open, onClose, task }: TaskDetailsModalProps) {
           </Typography.Title>
 
           <Space size={4}>
-            <Tag
-              color={statusToColor[task.status]}
-              icon={statusToIcon[task.status]}
-            >
+            <Tag color={statusToColor[task.status]} icon={statusToIcon[task.status]}>
               {t(`status.${task.status}`)}
             </Tag>
 
@@ -79,11 +67,11 @@ function TaskDetailsModal({ open, onClose, task }: TaskDetailsModalProps) {
         {/* Description */}
         <Space orientation="vertical">
           <Typography.Text type="secondary" strong>
-            {t("task.description")}
+            {t('task.description')}
           </Typography.Text>
 
           <Typography.Paragraph className="!mb-0">
-            {task.description || t("task.noDescription")}
+            {task.description || t('task.noDescription')}
           </Typography.Paragraph>
         </Space>
 
@@ -95,7 +83,7 @@ function TaskDetailsModal({ open, onClose, task }: TaskDetailsModalProps) {
             label={
               <Space>
                 {priorityConfig.icon}
-                {t("task.priority")}
+                {t('task.priority')}
               </Space>
             }
           >
@@ -109,7 +97,7 @@ function TaskDetailsModal({ open, onClose, task }: TaskDetailsModalProps) {
               label={
                 <Space>
                   <CalendarOutlined />
-                  {t("task.dueDate")}
+                  {t('task.dueDate')}
                 </Space>
               }
             >
@@ -121,7 +109,7 @@ function TaskDetailsModal({ open, onClose, task }: TaskDetailsModalProps) {
             label={
               <Space>
                 <ClockCircleOutlined />
-                {t("task.createdAt")}
+                {t('task.createdAt')}
               </Space>
             }
           >
@@ -133,7 +121,7 @@ function TaskDetailsModal({ open, onClose, task }: TaskDetailsModalProps) {
               label={
                 <Space>
                   <ClockCircleOutlined />
-                  {t("task.updatedAt")}
+                  {t('task.updatedAt')}
                 </Space>
               }
             >

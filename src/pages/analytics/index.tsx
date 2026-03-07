@@ -1,17 +1,13 @@
-import { Card, Col, Row, Statistic, Progress, Empty, Typography } from "antd";
-import {
-  CheckCircleOutlined,
-  ClockCircleOutlined,
-  SyncOutlined,
-} from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
-import { useAnalyticsStore, useSettingsStore } from "@/stores";
-import { memo, useEffect } from "react";
-import { statusToColor } from "@/utils";
-import { TaskStatus } from "@/models";
-import { Loader } from "@/components";
-import { Link } from "react-router-dom";
-import { StatusTaskCard, PriorityTaskCard } from "./components";
+import { Card, Col, Row, Statistic, Progress, Empty, Typography } from 'antd';
+import { CheckCircleOutlined, ClockCircleOutlined, SyncOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
+import { useAnalyticsStore, useSettingsStore } from '@/stores';
+import { memo, useEffect } from 'react';
+import { statusToColor } from '@/utils';
+import { TaskStatus } from '@/models';
+import { Loader } from '@/components';
+import { Link } from 'react-router-dom';
+import { StatusTaskCard, PriorityTaskCard } from './components';
 
 function Analytics() {
   const { t } = useTranslation();
@@ -19,9 +15,7 @@ function Analytics() {
 
   const isLoading = useAnalyticsStore((analytics) => analytics.isLoading);
   const analytics = useAnalyticsStore((analytics) => analytics.analytics);
-  const fetchAnalytics = useAnalyticsStore(
-    (analytics) => analytics.fetchAnalytics,
-  );
+  const fetchAnalytics = useAnalyticsStore((analytics) => analytics.fetchAnalytics);
 
   useEffect(() => {
     const abortController = new AbortController();
@@ -41,8 +35,8 @@ function Analytics() {
   if (analytics.total === 0) {
     return (
       <div className="p-6">
-        <h1 className="text-2xl font-bold mb-6">{t("analytics.title")}</h1>
-        <Empty description={t("analytics.noData")} />
+        <h1 className="text-2xl font-bold mb-6">{t('analytics.title')}</h1>
+        <Empty description={t('analytics.noData')} />
       </div>
     );
   }
@@ -50,14 +44,14 @@ function Analytics() {
   return (
     <div className="p-6">
       <Typography.Title level={2} className="mb-6">
-        {t("analytics.title")}
+        {t('analytics.title')}
       </Typography.Title>
 
       <Row gutter={[16, 16]}>
         <Col xs={24} sm={12} lg={6}>
           <Card>
             <Statistic
-              title={t("analytics.totalTasks")}
+              title={t('analytics.totalTasks')}
               value={analytics.total}
               styles={{
                 content: { color: colorPrimary },
@@ -67,13 +61,10 @@ function Analytics() {
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Link
-            to={`/?status=${TaskStatus.COMPLETED}`}
-            style={{ display: "block" }}
-          >
+          <Link to={`/?status=${TaskStatus.COMPLETED}`} style={{ display: 'block' }}>
             <Card hoverable>
               <Statistic
-                title={t("analytics.completedTasks")}
+                title={t('analytics.completedTasks')}
                 value={analytics.statuses[TaskStatus.COMPLETED]}
                 prefix={<CheckCircleOutlined />}
                 styles={{
@@ -85,13 +76,10 @@ function Analytics() {
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Link
-            to={`/?status=${TaskStatus.IN_PROGRESS}`}
-            style={{ display: "block" }}
-          >
+          <Link to={`/?status=${TaskStatus.IN_PROGRESS}`} style={{ display: 'block' }}>
             <Card hoverable>
               <Statistic
-                title={t("analytics.inProgressTasks")}
+                title={t('analytics.inProgressTasks')}
                 value={analytics.statuses[TaskStatus.IN_PROGRESS]}
                 prefix={<SyncOutlined />}
                 styles={{
@@ -103,14 +91,14 @@ function Analytics() {
         </Col>
 
         <Col xs={24} sm={12} lg={6}>
-          <Link to="/?isOverdue=true" style={{ display: "block" }}>
+          <Link to="/?isOverdue=true" style={{ display: 'block' }}>
             <Card hoverable>
               <Statistic
-                title={t("analytics.overdueTasks")}
+                title={t('analytics.overdueTasks')}
                 value={analytics.overdue}
                 prefix={<ClockCircleOutlined />}
                 styles={{
-                  content: { color: "#ff4d4f" },
+                  content: { color: '#ff4d4f' },
                 }}
               />
             </Card>
@@ -120,13 +108,13 @@ function Analytics() {
 
       <Row gutter={[16, 16]} className="mt-4">
         <Col xs={24} md={24} lg={24}>
-          <Card title={t("analytics.completionRate")}>
+          <Card title={t('analytics.completionRate')}>
             <Progress
               percent={analytics.completionRate}
-              status={analytics.completionRate === 100 ? "success" : "active"}
+              status={analytics.completionRate === 100 ? 'success' : 'active'}
               strokeColor={{
-                "0%": "#ab0c88",
-                "100%": colorPrimary,
+                '0%': '#ab0c88',
+                '100%': colorPrimary,
               }}
             />
           </Card>

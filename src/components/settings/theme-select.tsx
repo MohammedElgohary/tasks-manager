@@ -1,7 +1,7 @@
-import { useSettingsStore } from "@/stores";
-import { Theme } from "@/models";
-import { Segmented } from "antd";
-import { SunOutlined, MoonOutlined } from "@ant-design/icons";
+import { useSettingsStore } from '@/stores';
+import { Theme } from '@/models';
+import { Segmented } from 'antd';
+import { SunOutlined, MoonOutlined } from '@ant-design/icons';
 
 export function ThemeSelect() {
   const theme = useSettingsStore((state) => state.theme);
@@ -18,13 +18,5 @@ export function ThemeSelect() {
     },
   ];
 
-  return (
-    <Segmented
-      options={options}
-      value={theme}
-      onChange={setTheme}
-      block
-      size="large"
-    />
-  );
+  return <Segmented options={options} value={theme} onChange={setTheme} block size="large" />;
 }

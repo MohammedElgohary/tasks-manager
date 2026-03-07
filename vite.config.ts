@@ -1,18 +1,13 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react-swc";
-import tailwindcss from "@tailwindcss/vite";
-import path from "path";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react-swc';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'path';
 
 export default defineConfig({
   plugins: [
     react({
       babel: {
-        plugins: [
-          [
-            "import",
-            { libraryName: "antd", libraryDirectory: "es", style: false },
-          ],
-        ],
+        plugins: [['import', { libraryName: 'antd', libraryDirectory: 'es', style: false }]],
       },
     }),
     tailwindcss(),
@@ -28,32 +23,32 @@ export default defineConfig({
 
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "./src"),
+      '@': path.resolve(__dirname, './src'),
     },
   },
 
   build: {
-    target: "esnext",
+    target: 'esnext',
     cssCodeSplit: true,
     sourcemap: false,
-    minify: "esbuild",
+    minify: 'esbuild',
 
     rollupOptions: {
       output: {
         manualChunks: {
-          react: ["react", "react-dom"],
-          antd: ["antd"],
-          vendor: ["zustand", "react-dnd"],
+          react: ['react', 'react-dom'],
+          antd: ['antd'],
+          vendor: ['zustand', 'react-dnd'],
         },
       },
     },
   },
 
   esbuild: {
-    drop: ["console", "debugger"],
+    drop: ['console', 'debugger'],
   },
 
   optimizeDeps: {
-    include: ["react", "react-dom", "antd"],
+    include: ['react', 'react-dom', 'antd'],
   },
 });

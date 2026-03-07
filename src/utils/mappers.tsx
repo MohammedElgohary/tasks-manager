@@ -1,4 +1,4 @@
-import { TaskPriority, TaskStatus } from "@/models";
+import { TaskPriority, TaskStatus } from '@/models';
 import {
   ExclamationCircleOutlined,
   FireOutlined,
@@ -7,13 +7,13 @@ import {
   ClockCircleOutlined,
   SyncOutlined,
   CheckCircleOutlined,
-} from "@ant-design/icons";
+} from '@ant-design/icons';
 
 export const statusToColor: Record<TaskStatus, string> = {
-  [TaskStatus.ON_HOLD]: "#8b8b8b",
-  [TaskStatus.PENDING]: "#faad14",
-  [TaskStatus.IN_PROGRESS]: "#1677ff",
-  [TaskStatus.COMPLETED]: "#52c41a",
+  [TaskStatus.ON_HOLD]: '#8b8b8b',
+  [TaskStatus.PENDING]: '#faad14',
+  [TaskStatus.IN_PROGRESS]: '#1677ff',
+  [TaskStatus.COMPLETED]: '#52c41a',
 };
 
 export const statusToIcon: Record<TaskStatus, React.ReactNode> = {
@@ -24,10 +24,10 @@ export const statusToIcon: Record<TaskStatus, React.ReactNode> = {
 };
 
 export const priorityToColor: Record<TaskPriority, string> = {
-  [TaskPriority.LOW]: "#95de64",
-  [TaskPriority.MEDIUM]: "#ffd666",
-  [TaskPriority.HIGH]: "#ff9c6e",
-  [TaskPriority.CRITICAL]: "#ff4d4f",
+  [TaskPriority.LOW]: '#95de64',
+  [TaskPriority.MEDIUM]: '#ffd666',
+  [TaskPriority.HIGH]: '#ff9c6e',
+  [TaskPriority.CRITICAL]: '#ff4d4f',
 };
 
 export const priorityToIcon: Record<TaskPriority, React.ReactNode> = {
@@ -44,22 +44,22 @@ export const prioritiesMap: Record<
   [TaskPriority.LOW]: {
     icon: priorityToIcon[TaskPriority.LOW],
     color: priorityToColor[TaskPriority.LOW],
-    label: "priority.LOW",
+    label: 'priority.LOW',
   },
   [TaskPriority.MEDIUM]: {
     icon: priorityToIcon[TaskPriority.MEDIUM],
     color: priorityToColor[TaskPriority.MEDIUM],
-    label: "priority.MEDIUM",
+    label: 'priority.MEDIUM',
   },
   [TaskPriority.HIGH]: {
     icon: priorityToIcon[TaskPriority.HIGH],
     color: priorityToColor[TaskPriority.HIGH],
-    label: "priority.HIGH",
+    label: 'priority.HIGH',
   },
   [TaskPriority.CRITICAL]: {
     icon: priorityToIcon[TaskPriority.CRITICAL],
     color: priorityToColor[TaskPriority.CRITICAL],
-    label: "priority.CRITICAL",
+    label: 'priority.CRITICAL',
   },
 } as const;
 
@@ -70,21 +70,21 @@ export const statusesMapper: Record<
   [TaskStatus.ON_HOLD]: {
     icon: statusToIcon[TaskStatus.ON_HOLD],
     color: statusToColor[TaskStatus.ON_HOLD],
-    label: "status.ON_HOLD",
+    label: 'status.ON_HOLD',
   },
   [TaskStatus.PENDING]: {
     icon: statusToIcon[TaskStatus.PENDING],
     color: statusToColor[TaskStatus.PENDING],
-    label: "status.PENDING",
+    label: 'status.PENDING',
   },
   [TaskStatus.IN_PROGRESS]: {
     icon: statusToIcon[TaskStatus.IN_PROGRESS],
     color: statusToColor[TaskStatus.IN_PROGRESS],
-    label: "status.IN_PROGRESS",
+    label: 'status.IN_PROGRESS',
   },
   [TaskStatus.COMPLETED]: {
     icon: statusToIcon[TaskStatus.COMPLETED],
     color: statusToColor[TaskStatus.COMPLETED],
-    label: "status.COMPLETED",
+    label: 'status.COMPLETED',
   },
 } as const;

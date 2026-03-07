@@ -1,9 +1,9 @@
-import { useSettingsStore } from "@/stores";
-import { Language } from "@/models";
-import { Flex, Select, Typography } from "antd";
-import { useMemo } from "react";
-import KSAFlag from "@/assets/icons/KSA.svg";
-import USAFlag from "@/assets/icons/USA.svg";
+import { useSettingsStore } from '@/stores';
+import { Language } from '@/models';
+import { Flex, Select, Typography } from 'antd';
+import { useMemo } from 'react';
+import KSAFlag from '@/assets/icons/KSA.svg';
+import USAFlag from '@/assets/icons/USA.svg';
 
 export function LanguageSelect() {
   const language = useSettingsStore((state) => state.language);
@@ -30,7 +30,7 @@ export function LanguageSelect() {
         value: Language.ARABIC,
       },
     ],
-    [],
+    []
   );
 
   return (

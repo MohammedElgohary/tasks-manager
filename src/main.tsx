@@ -1,20 +1,20 @@
-import { StrictMode, Suspense } from "react";
-import { createRoot } from "react-dom/client";
-import { DndProvider } from "react-dnd";
-import { HTML5Backend } from "react-dnd-html5-backend";
-import { TouchBackend } from "react-dnd-touch-backend";
-import { MultiBackend, TouchTransition } from "react-dnd-multi-backend";
-import { App as AntApp, Layout, ConfigProvider, theme } from "antd";
-import enUS from "antd/es/locale/en_US";
-import arEG from "antd/es/locale/ar_EG";
-import "./index.css";
-import TasksManagerApp from "./app.tsx";
-import "antd/dist/reset.css";
-import { useSettingsStore } from "./stores";
-import { Theme, Language } from "./models";
-import { Loader } from "./components/index.ts";
-import { I18nextProvider, useTranslation } from "react-i18next";
-import i18n from "./i18n";
+import { StrictMode, Suspense } from 'react';
+import { createRoot } from 'react-dom/client';
+import { DndProvider } from 'react-dnd';
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { TouchBackend } from 'react-dnd-touch-backend';
+import { MultiBackend, TouchTransition } from 'react-dnd-multi-backend';
+import { App as AntApp, Layout, ConfigProvider, theme } from 'antd';
+import enUS from 'antd/es/locale/en_US';
+import arEG from 'antd/es/locale/ar_EG';
+import './index.css';
+import TasksManagerApp from './app.tsx';
+import 'antd/dist/reset.css';
+import { useSettingsStore } from './stores';
+import { Theme, Language } from './models';
+import { Loader } from './components/index.ts';
+import { I18nextProvider, useTranslation } from 'react-i18next';
+import i18n from './i18n';
 
 const HTML5toTouch = {
   backends: [
@@ -45,14 +45,11 @@ export function Root() {
           token: {
             colorPrimary,
           },
-          algorithm:
-            appTheme === Theme.DARK
-              ? theme.darkAlgorithm
-              : theme.defaultAlgorithm,
+          algorithm: appTheme === Theme.DARK ? theme.darkAlgorithm : theme.defaultAlgorithm,
         }}
-        componentSize={"large"}
+        componentSize={'large'}
         locale={language === Language.ARABIC ? arEG : enUS}
-        direction={language === Language.ARABIC ? "rtl" : "ltr"}
+        direction={language === Language.ARABIC ? 'rtl' : 'ltr'}
       >
         <DndProvider backend={MultiBackend} options={HTML5toTouch}>
           <Layout>
@@ -68,10 +65,10 @@ export function Root() {
   );
 }
 
-createRoot(document.getElementById("root")!).render(
+createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <I18nextProvider i18n={i18n}>
       <Root />
     </I18nextProvider>
-  </StrictMode>,
+  </StrictMode>
 );

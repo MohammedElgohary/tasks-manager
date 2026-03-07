@@ -1,14 +1,14 @@
-import { useSettingsStore } from "@/stores";
-import { Flex, Input } from "antd";
-import { SettingOutlined } from "@ant-design/icons";
-import { useMemo } from "react";
+import { useSettingsStore } from '@/stores';
+import { Flex, Input } from 'antd';
+import { SettingOutlined } from '@ant-design/icons';
+import { useMemo } from 'react';
 
-const colorOptions = ["#bc4749", "#a53860", "#3a6ea5", "#722ED1"] as const;
+const colorOptions = ['#bc4749', '#a53860', '#3a6ea5', '#722ED1'] as const;
 const outlineColors = {
-  "#bc4749": "outline-[#bc4749]",
-  "#a53860": "outline-[#a53860]",
-  "#3a6ea5": "outline-[#3a6ea5]",
-  "#722ED1": "outline-[#722ED1]",
+  '#bc4749': 'outline-[#bc4749]',
+  '#a53860': 'outline-[#a53860]',
+  '#3a6ea5': 'outline-[#3a6ea5]',
+  '#722ED1': 'outline-[#722ED1]',
 };
 
 export function PrimaryColor() {
@@ -25,7 +25,7 @@ export function PrimaryColor() {
           onClick={() => changeColorPrimary(color)}
         />
       )),
-    [colorPrimary, changeColorPrimary],
+    [colorPrimary, changeColorPrimary]
   );
 
   return (
@@ -60,7 +60,7 @@ function ColorButton({ onClick, color, isSelected }: ColorButtonProps) {
     <div
       onClick={onClick}
       style={{ backgroundColor: color }}
-      className={`w-8 h-8 rounded-full cursor-pointer ${isSelected ? `outline ${outlineColors[color]}` : ""} outline-offset-2`}
+      className={`w-8 h-8 rounded-full cursor-pointer ${isSelected ? `outline ${outlineColors[color]}` : ''} outline-offset-2`}
     ></div>
   );
 }

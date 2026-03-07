@@ -1,4 +1,4 @@
-import { Flex, Spin } from "antd";
+import { Flex, Spin } from 'antd';
 
 export function Loader() {
   return (

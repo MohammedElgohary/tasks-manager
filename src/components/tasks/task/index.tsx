@@ -1,22 +1,13 @@
-import {
-  Button,
-  Card,
-  Space,
-  Typography,
-  Tooltip,
-  Tag,
-  Grid,
-  theme,
-} from "antd";
-import { EditOutlined, HolderOutlined } from "@ant-design/icons";
-import { CreateEditTaskButton } from "@/components";
-import { useDragTask } from "@/hooks";
-import type { Task } from "@/models";
-import { type Ref, useState, memo, useMemo } from "react";
-import { useTranslation } from "react-i18next";
-import TaskDetailsModal from "./task-details-modal";
-import { formatDate, formatDueDate, prioritiesMap } from "@/utils";
-import DeleteTaskModal from "./delete-task-modal";
+import { Button, Card, Space, Typography, Tooltip, Tag, Grid, theme } from 'antd';
+import { EditOutlined, HolderOutlined } from '@ant-design/icons';
+import { CreateEditTaskButton } from '@/components';
+import { useDragTask } from '@/hooks';
+import type { Task } from '@/models';
+import { type Ref, useState, memo, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
+import TaskDetailsModal from './task-details-modal';
+import { formatDate, formatDueDate, prioritiesMap } from '@/utils';
+import DeleteTaskModal from './delete-task-modal';
 
 const { Text, Paragraph } = Typography;
 const { useBreakpoint } = Grid;
@@ -45,13 +36,10 @@ function Task({ task, index }: TaskProps) {
 
   const dueDateFormat = useMemo(
     () => formatDueDate(task.dueDate, task.status),
-    [task.dueDate, task.status],
+    [task.dueDate, task.status]
   );
 
-  const priorityConfig = useMemo(
-    () => prioritiesMap[task.priority],
-    [task.priority],
-  );
+  const priorityConfig = useMemo(() => prioritiesMap[task.priority], [task.priority]);
 
   return (
     <>
@@ -65,8 +53,8 @@ function Task({ task, index }: TaskProps) {
           hoverable
           style={{
             opacity: isDragging ? 0.5 : 1,
-            cursor: isDragging ? "grabbing" : "grab",
-            transition: "all 0.2s ease",
+            cursor: isDragging ? 'grabbing' : 'grab',
+            transition: 'all 0.2s ease',
           }}
           className="w-full"
           onClick={() => setIsOpenDetailsModal(true)}
@@ -90,7 +78,7 @@ function Task({ task, index }: TaskProps) {
                 style={{
                   fontSize: isXs ? 14 : isSm ? 15 : 16,
                   lineHeight: 1.4,
-                  display: "block",
+                  display: 'block',
                 }}
                 ellipsis={{ tooltip: task.title }}
               >
@@ -102,9 +90,7 @@ function Task({ task, index }: TaskProps) {
           {/* CONTEXT ROW - Tags */}
           <div className="flex flex-wrap items-center gap-2 mt-3">
             {dueDateFormat && (
-              <Tooltip
-                title={t(dueDateFormat.tooltip, dueDateFormat.tooltipParams)}
-              >
+              <Tooltip title={t(dueDateFormat.tooltip, dueDateFormat.tooltipParams)}>
                 <Tag
                   color={dueDateFormat.color}
                   icon={dueDateFormat.icon}
@@ -121,7 +107,7 @@ function Task({ task, index }: TaskProps) {
                 icon={priorityConfig.icon}
                 style={{ fontSize: isXs ? 11 : 12, margin: 0 }}
               >
-                {isXs ? "" : t(priorityConfig.label)}
+                {isXs ? '' : t(priorityConfig.label)}
               </Tag>
             </Tooltip>
           </div>
@@ -150,7 +136,7 @@ function Task({ task, index }: TaskProps) {
             <Space size={isXs ? 4 : 8} onClick={(e) => e.stopPropagation()}>
               <CreateEditTaskButton
                 trigger={
-                  <Tooltip title={t("task.editTask")}>
+                  <Tooltip title={t('task.editTask')}>
                     <Button
                       type="text"
                       icon={<EditOutlined />}

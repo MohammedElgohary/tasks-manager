@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import type { Task, TaskPriority, TaskStatus } from "@/models";
-import { requestGetTasks } from "@/network";
-import debounce from "debounce-promise";
+import { create } from 'zustand';
+import type { Task, TaskPriority, TaskStatus } from '@/models';
+import { requestGetTasks } from '@/network';
+import debounce from 'debounce-promise';
 
 const debouncedRequestGetTasks = debounce(requestGetTasks, 500);
 

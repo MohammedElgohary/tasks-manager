@@ -1,6 +1,6 @@
-import { useDrop } from "react-dnd";
-import type { DragItem, TaskStatus } from "@/models";
-import { TASK_TYPE } from "./useDragTask";
+import { useDrop } from 'react-dnd';
+import type { DragItem, TaskStatus } from '@/models';
+import { TASK_TYPE } from './useDragTask';
 
 type UseDropTaskProps = {
   status: TaskStatus;

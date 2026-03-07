@@ -5,10 +5,10 @@ import {
   type Task,
   type TaskInput,
   type TaskPriority,
-} from "@/models";
-import db from "@/database";
-import { sleepRandom } from "@/utils/sleep";
-import dayjs from "dayjs";
+} from '@/models';
+import db from '@/database';
+import { sleepRandom } from '@/utils/sleep';
+import dayjs from 'dayjs';
 
 //#region get tasks list
 type RequestGetTasksArgs = {
@@ -21,7 +21,7 @@ type RequestGetTasksArgs = {
 
 export async function requestGetTasks(
   { search, status, priority, isOverdue }: RequestGetTasksArgs,
-  signal?: AbortSignal,
+  _signal?: AbortSignal
 ): Promise<Array<Task>> {
   await sleepRandom();
 
@@ -31,8 +31,8 @@ export async function requestGetTasks(
     tasks = tasks.filter(
       (task) =>
         task.dueDate &&
-        dayjs(task.dueDate).isBefore(dayjs(), "day") &&
-        task.status !== TaskStatus.COMPLETED,
+        dayjs(task.dueDate).isBefore(dayjs(), 'day') &&
+        task.status !== TaskStatus.COMPLETED
     );
   }
 
@@ -48,7 +48,7 @@ export async function requestGetTasks(
     tasks = tasks.filter(
       (task) =>
         task.title.toLowerCase().includes(search.toLowerCase()) ||
-        task.description.toLowerCase().includes(search.toLowerCase()),
+        task.description.toLowerCase().includes(search.toLowerCase())
     );
   }
 
@@ -57,10 +57,7 @@ export async function requestGetTasks(
 //#endregion get tasks list
 
 //#region add task
-export async function requestAddTask(
-  task: TaskInput,
-  signal?: AbortSignal,
-): Promise<void> {
+export async function requestAddTask(task: TaskInput, _signal?: AbortSignal): Promise<void> {
   await sleepRandom();
 
   db.addTask(task);
@@ -71,7 +68,7 @@ export async function requestAddTask(
 export async function requestUpdateTask(
   id: string,
   task: TaskInput,
-  signal?: AbortSignal,
+  _signal?: AbortSignal
 ): Promise<void> {
   await sleepRandom();
 
@@ -80,10 +77,7 @@ export async function requestUpdateTask(
 //#endregion update task
 
 //#region delete task
-export async function requestDeleteTask(
-  id: string,
-  signal?: AbortSignal,
-): Promise<void> {
+export async function requestDeleteTask(id: string, _signal?: AbortSignal): Promise<void> {
   await sleepRandom();
 
   db.deleteTask(id);
@@ -94,7 +88,7 @@ export async function requestDeleteTask(
 export async function requestChangeTaskStatus(
   taskId: string,
   newStatus: TaskStatus,
-  signal?: AbortSignal,
+  _signal?: AbortSignal
 ): Promise<void> {
   await sleepRandom();
 
@@ -103,9 +97,7 @@ export async function requestChangeTaskStatus(
 //#endregion change task status
 
 //#region get analytics
-export async function requestGetAnalytics(
-  signal?: AbortSignal,
-): Promise<Analytics> {
+export async function requestGetAnalytics(_signal?: AbortSignal): Promise<Analytics> {
   await sleepRandom();
 
   return db.getAnalytics();
@@ -116,7 +108,7 @@ export async function requestGetAnalytics(
 export async function requestImportTasks(
   tasks: Task[],
   mode: ImportMode,
-  signal?: AbortSignal,
+  _signal?: AbortSignal
 ): Promise<void> {
   await sleepRandom();
 

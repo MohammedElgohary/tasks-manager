@@ -1,7 +1,7 @@
-import { create } from "zustand";
-import { persist } from "zustand/middleware";
-import { Theme, Language } from "@/models";
-import i18n from "i18next";
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+import { Theme, Language } from '@/models';
+import i18n from 'i18next';
 
 interface SettingsState {
   theme: Theme;
@@ -18,18 +18,18 @@ interface SettingsStore extends SettingsState {
 
 const DEFAULT_SETTINGS: SettingsState = {
   theme: Theme.LIGHT,
-  colorPrimary: "#bc4749",
+  colorPrimary: '#bc4749',
   language: Language.ENGLISH,
 };
 
 // Helper to apply theme to DOM
 const applyThemeToDom = (theme: Theme) => {
-  document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.setAttribute('data-theme', theme);
 
   if (theme === Theme.DARK) {
-    document.documentElement.classList.add("dark");
+    document.documentElement.classList.add('dark');
   } else {
-    document.documentElement.classList.remove("dark");
+    document.documentElement.classList.remove('dark');
   }
 };
 
@@ -60,18 +60,17 @@ export const useSettingsStore = create<SettingsStore>()(
       },
     }),
     {
-      name: "settings",
+      name: 'settings',
       onRehydrateStorage() {
         return (hydratedState) => {
           setTimeout(() => {
             if (!hydratedState) return;
 
             applyThemeToDom(hydratedState.theme);
-            if (hydratedState.language)
-              i18n.changeLanguage(hydratedState.language);
+            if (hydratedState.language) i18n.changeLanguage(hydratedState.language);
           }, 0);
         };
       },
-    },
-  ),
+    }
+  )
 );

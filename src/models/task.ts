@@ -1,20 +1,20 @@
 export enum TaskStatus {
-  ON_HOLD = "ON_HOLD",
-  PENDING = "PENDING",
-  IN_PROGRESS = "IN_PROGRESS",
-  COMPLETED = "COMPLETED",
+  ON_HOLD = 'ON_HOLD',
+  PENDING = 'PENDING',
+  IN_PROGRESS = 'IN_PROGRESS',
+  COMPLETED = 'COMPLETED',
 }
 
 export enum TaskPriority {
-  LOW = "LOW",
-  MEDIUM = "MEDIUM",
-  HIGH = "HIGH",
-  CRITICAL = "CRITICAL",
+  LOW = 'LOW',
+  MEDIUM = 'MEDIUM',
+  HIGH = 'HIGH',
+  CRITICAL = 'CRITICAL',
 }
 
 export enum ImportMode {
-  REPLACE = "REPLACE",
-  MERGE = "MERGE",
+  REPLACE = 'REPLACE',
+  MERGE = 'MERGE',
 }
 
 export interface Task {
@@ -28,7 +28,7 @@ export interface Task {
   priority: TaskPriority;
 }
 
-export type TaskInput = Omit<Task, "id" | "createdAt" | "updatedAt">;
+export type TaskInput = Omit<Task, 'id' | 'createdAt' | 'updatedAt'>;
 
 export interface Analytics {
   statuses: {
