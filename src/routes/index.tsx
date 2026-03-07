@@ -1,14 +1,14 @@
-import { lazy } from "react";
-import { createBrowserRouter } from "react-router-dom";
-import Layout from "./layout";
+import { lazy } from 'react';
+import { createBrowserRouter } from 'react-router-dom';
+import Layout from './layout';
 
-const TasksList = lazy(() => import("@/pages/tasks-list"));
-const Analytics = lazy(() => import("@/pages/analytics"));
-const About = lazy(() => import("@/pages/about"));
+const TasksList = lazy(() => import('@/pages/tasks-list'));
+const Analytics = lazy(() => import('@/pages/analytics'));
+const About = lazy(() => import('@/pages/about'));
 
 export const router = createBrowserRouter([
   {
-    path: "/",
+    path: '/',
     element: <Layout />,
     children: [
       {
@@ -16,11 +16,11 @@ export const router = createBrowserRouter([
         element: <TasksList />,
       },
       {
-        path: "analytics",
+        path: 'analytics',
         element: <Analytics />,
       },
       {
-        path: "about",
+        path: 'about',
         element: <About />,
       },
     ],

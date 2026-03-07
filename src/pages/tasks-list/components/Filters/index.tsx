@@ -1,9 +1,9 @@
-import { Card, Flex, Input, Button } from "antd";
-import { PrioritySelect, StatusSelect } from "@/components";
-import { useTasksStore } from "@/stores";
-import { ClearOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
-import { useTasksUrlFilters } from "@/hooks";
+import { Card, Flex, Input, Button } from 'antd';
+import { PrioritySelect, StatusSelect } from '@/components';
+import { useTasksStore } from '@/stores';
+import { ClearOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
+import { useTasksUrlFilters } from '@/hooks';
 
 export function Filters() {
   const { t } = useTranslation();
@@ -18,21 +18,21 @@ export function Filters() {
     <Card data-tour="filters">
       <Flex gap="small" wrap>
         <Input.Search
-          placeholder={t("common.search")}
+          placeholder={t('common.search')}
           value={filters.search}
           onChange={(event) => changeSearch(event.target.value || undefined)}
           className="flex-5 min-w-[250px]"
         />
 
         <StatusSelect
-          placeholder={t("task.status")}
+          placeholder={t('task.status')}
           value={filters.status}
           onChange={(value) => changeFilters({ ...filters, status: value })}
           className="flex-1 min-w-[200px]"
         />
 
         <PrioritySelect
-          placeholder={t("task.priority")}
+          placeholder={t('task.priority')}
           value={filters.priority}
           onChange={(value) => changeFilters({ ...filters, priority: value })}
           className="flex-1 min-w-[200px]"
@@ -44,7 +44,7 @@ export function Filters() {
           icon={<ClearOutlined />}
           className="flex-1 min-w-[120px]"
         >
-          {t("common.clear")}
+          {t('common.clear')}
         </Button>
       </Flex>
     </Card>

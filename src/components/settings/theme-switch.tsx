@@ -1,8 +1,8 @@
-import { Switch, Tooltip } from "antd";
-import { useSettingsStore } from "@/stores";
-import { Theme } from "@/models";
-import { SunOutlined, MoonOutlined } from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
+import { Switch, Tooltip } from 'antd';
+import { useSettingsStore } from '@/stores';
+import { Theme } from '@/models';
+import { SunOutlined, MoonOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
 
 export function ThemeSwitch() {
   const { t } = useTranslation();
@@ -17,7 +17,7 @@ export function ThemeSwitch() {
   }
 
   return (
-    <Tooltip title={t(isDark ? "theme.switchToLight" : "theme.switchToDark")}>
+    <Tooltip title={t(isDark ? 'theme.switchToLight' : 'theme.switchToDark')}>
       <Switch
         checkedChildren={<MoonOutlined />}
         unCheckedChildren={<SunOutlined />}

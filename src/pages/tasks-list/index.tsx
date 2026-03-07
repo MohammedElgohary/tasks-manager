@@ -1,14 +1,9 @@
-import { Typography, Flex, Grid, Tooltip, App } from "antd";
-import { Filters, TasksList } from "./components";
-import { useTranslation } from "react-i18next";
-import {
-  LanguageSelect,
-  ThemeSelect,
-  AppTour,
-  ActionsDropdown,
-} from "@/components";
-import { useTasksStore } from "@/stores";
-import { memo, useEffect, useMemo } from "react";
+import { Typography, Flex, Grid, Tooltip, App } from 'antd';
+import { Filters, TasksList } from './components';
+import { useTranslation } from 'react-i18next';
+import { LanguageSelect, ThemeSelect, AppTour, ActionsDropdown } from '@/components';
+import { useTasksStore } from '@/stores';
+import { memo, useEffect, useMemo } from 'react';
 
 const { useBreakpoint } = Grid;
 
@@ -35,7 +30,7 @@ function TasksListPage() {
     if (!error) return;
 
     console.error(error);
-    message.error(t("tasksList.failedToFetch"));
+    message.error(t('tasksList.failedToFetch'));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [error]);
 
@@ -46,20 +41,17 @@ function TasksListPage() {
       isSm: screens.sm && !screens.md,
       isMd: screens.md && !screens.lg,
     }),
-    [screens.xs, screens.sm, screens.md, screens.lg],
+    [screens.xs, screens.sm, screens.md, screens.lg]
   );
 
   // Gradual title size scale
-  const titleLevel = useMemo(
-    () => (isXs ? 4 : isSm ? 3 : isMd ? 2 : 1),
-    [isMd, isSm, isXs],
-  );
+  const titleLevel = useMemo(() => (isXs ? 4 : isSm ? 3 : isMd ? 2 : 1), [isMd, isSm, isXs]);
 
   return (
     <Flex vertical className="gap-4 page">
       <Flex justify="space-between" align="center" wrap gap={8}>
         <Typography.Title level={titleLevel} className="m-0">
-          {t("tasksList.title")}
+          {t('tasksList.title')}
         </Typography.Title>
 
         <Flex align="center" gap={8}>
@@ -67,13 +59,13 @@ function TasksListPage() {
 
           {!isSm && !isXs && (
             <>
-              <Tooltip title={t("common.theme")}>
+              <Tooltip title={t('common.theme')}>
                 <span>
                   <ThemeSelect />
                 </span>
               </Tooltip>
 
-              <Tooltip title={t("common.language")}>
+              <Tooltip title={t('common.language')}>
                 <span>
                   <LanguageSelect />
                 </span>

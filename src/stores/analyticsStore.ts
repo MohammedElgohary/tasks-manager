@@ -1,6 +1,6 @@
-import { create } from "zustand";
-import type { Analytics } from "@/models";
-import { requestGetAnalytics } from "@/network";
+import { create } from 'zustand';
+import type { Analytics } from '@/models';
+import { requestGetAnalytics } from '@/network';
 
 interface AnalyticsStore {
   isLoading: boolean;

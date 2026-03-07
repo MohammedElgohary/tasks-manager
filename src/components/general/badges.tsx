@@ -1,19 +1,14 @@
-import { TaskPriority, TaskStatus } from "@/models";
-import {
-  prioritiesMap,
-  priorityToColor,
-  statusToColor,
-  statusToIcon,
-} from "@/utils";
-import { Space, Typography } from "antd";
-import { cloneElement, useMemo } from "react";
-import { useTranslation } from "react-i18next";
+import { TaskPriority, TaskStatus } from '@/models';
+import { prioritiesMap, priorityToColor, statusToColor, statusToIcon } from '@/utils';
+import { Space, Typography } from 'antd';
+import { cloneElement, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 
 interface BaseBadgeProps<T extends TaskStatus | TaskPriority> {
   showText?: boolean;
   target: T;
   source: Record<T, string>;
-  translationKey: "status" | "priority";
+  translationKey: 'status' | 'priority';
   icon: React.ReactNode;
 }
 
@@ -34,9 +29,9 @@ function BaseBadge<T extends TaskStatus | TaskPriority>({
           style: {
             color: source[target],
           },
-        } as React.SVGProps<SVGSVGElement>,
+        } as React.SVGProps<SVGSVGElement>
       ),
-    [icon, source, target],
+    [icon, source, target]
   );
 
   return showText ? (
@@ -50,7 +45,7 @@ function BaseBadge<T extends TaskStatus | TaskPriority>({
 }
 
 export function StatusBadge(
-  props: Omit<BaseBadgeProps<TaskStatus>, "source" | "translationKey" | "icon">,
+  props: Omit<BaseBadgeProps<TaskStatus>, 'source' | 'translationKey' | 'icon'>
 ) {
   return (
     <BaseBadge
@@ -63,10 +58,7 @@ export function StatusBadge(
 }
 
 export function PriorityBadge(
-  props: Omit<
-    BaseBadgeProps<TaskPriority>,
-    "source" | "translationKey" | "icon"
-  >,
+  props: Omit<BaseBadgeProps<TaskPriority>, 'source' | 'translationKey' | 'icon'>
 ) {
   return (
     <BaseBadge

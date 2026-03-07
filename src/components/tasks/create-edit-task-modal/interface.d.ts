@@ -1,4 +1,4 @@
-import type { Task } from "@/models";
+import type { Task } from '@/models';
 
 export type CreateEditTaskButtonProps = {
   trigger: React.ReactElement<{
@@ -7,16 +7,10 @@ export type CreateEditTaskButtonProps = {
   initialValues?: Task;
 };
 
-export type CreateEditTaskModalProps = Pick<
-  CreateEditTaskButtonProps,
-  "initialValues"
-> & {
+export type CreateEditTaskModalProps = Pick<CreateEditTaskButtonProps, 'initialValues'> & {
   open: boolean;
   onClose: () => void;
   onSuccess: () => void;
 };
 
-export type FormValues = Pick<
-  Task,
-  "title" | "description" | "status" | "dueDate" | "priority"
->;
+export type FormValues = Pick<Task, 'title' | 'description' | 'status' | 'dueDate' | 'priority'>;

@@ -1,13 +1,9 @@
-import { memo, Suspense, useTransition } from "react";
-import { Outlet, useLocation, useNavigate } from "react-router-dom";
-import { Menu } from "antd";
-import {
-  UnorderedListOutlined,
-  BarChartOutlined,
-  InfoCircleOutlined,
-} from "@ant-design/icons";
-import { useTranslation } from "react-i18next";
-import { Loader } from "@/components";
+import { memo, Suspense, useTransition } from 'react';
+import { Outlet, useLocation, useNavigate } from 'react-router-dom';
+import { Menu } from 'antd';
+import { UnorderedListOutlined, BarChartOutlined, InfoCircleOutlined } from '@ant-design/icons';
+import { useTranslation } from 'react-i18next';
+import { Loader } from '@/components';
 
 function Layout() {
   const { t } = useTranslation();
@@ -15,7 +11,7 @@ function Layout() {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const currentPath = location.pathname.split("/")[1];
+  const currentPath = location.pathname.split('/')[1];
 
   return (
     <>
@@ -25,25 +21,25 @@ function Layout() {
         className="fixed-menu"
         items={[
           {
-            key: "",
+            key: '',
             icon: <UnorderedListOutlined />,
-            label: t("tasksList.title"),
+            label: t('tasksList.title'),
             disabled: isPending,
-            onClick: () => startTransition(() => navigate("/")),
+            onClick: () => startTransition(() => navigate('/')),
           },
           {
-            key: "analytics",
+            key: 'analytics',
             icon: <BarChartOutlined />,
-            label: t("analytics.title"),
+            label: t('analytics.title'),
             disabled: isPending,
-            onClick: () => startTransition(() => navigate("/analytics")),
+            onClick: () => startTransition(() => navigate('/analytics')),
           },
           {
-            key: "about",
+            key: 'about',
             icon: <InfoCircleOutlined />,
-            label: t("about.title"),
+            label: t('about.title'),
             disabled: isPending,
-            onClick: () => startTransition(() => navigate("/about")),
+            onClick: () => startTransition(() => navigate('/about')),
           },
         ]}
       />

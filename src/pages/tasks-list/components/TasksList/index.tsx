@@ -1,10 +1,10 @@
-import { Col, Row, Tabs, Grid, FloatButton, Card } from "antd";
-import { TaskStatus } from "@/models";
-import { Column, CreateEditTaskButton, StatusBadge } from "@/components";
-import { useTranslation } from "react-i18next";
-import { PlusOutlined } from "@ant-design/icons";
-import { memo, useMemo } from "react";
-import { useActiveTab } from "@/hooks";
+import { Col, Row, Tabs, Grid, FloatButton, Card } from 'antd';
+import { TaskStatus } from '@/models';
+import { Column, CreateEditTaskButton, StatusBadge } from '@/components';
+import { useTranslation } from 'react-i18next';
+import { PlusOutlined } from '@ant-design/icons';
+import { memo, useMemo } from 'react';
+import { useActiveTab } from '@/hooks';
 
 const { useBreakpoint } = Grid;
 
@@ -18,7 +18,7 @@ const NewTaskFloatButton = memo(() => {
           type="primary"
           icon={<PlusOutlined />}
           data-tour="new-task-button"
-          tooltip={t("tasksList.newTask")}
+          tooltip={t('tasksList.newTask')}
           className="pulse-button"
         />
       }
@@ -36,7 +36,7 @@ const MobileTasksList = memo(() => {
         label: <StatusBadge target={status} showText />,
         children: <Column status={status} />,
       })),
-    [],
+    []
   );
 
   return (
@@ -64,7 +64,7 @@ const DesktopTasksList = memo(() => {
           <Column status={status} />
         </Col>
       )),
-    [],
+    []
   );
 
   return (

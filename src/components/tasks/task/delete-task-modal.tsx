@@ -1,9 +1,9 @@
-import { App, Button, Tooltip, Grid } from "antd";
-import { DeleteOutlined } from "@ant-design/icons";
-import { requestDeleteTask } from "@/network";
-import { useTranslation } from "react-i18next";
-import { useTasksStore } from "@/stores";
-import { memo } from "react";
+import { App, Button, Tooltip, Grid } from 'antd';
+import { DeleteOutlined } from '@ant-design/icons';
+import { requestDeleteTask } from '@/network';
+import { useTranslation } from 'react-i18next';
+import { useTasksStore } from '@/stores';
+import { memo } from 'react';
 
 const { useBreakpoint } = Grid;
 
@@ -21,16 +21,16 @@ function DeleteTaskModal({ id }: DeleteTaskModalProps) {
 
   function confirmRemoveTask() {
     modal.confirm({
-      title: t("deleteModal.title"),
-      content: t("deleteModal.content"),
+      title: t('deleteModal.title'),
+      content: t('deleteModal.content'),
       centered: true,
       onOk: async () => {
         await requestDeleteTask(id);
-        message.success(t("deleteModal.success"));
+        message.success(t('deleteModal.success'));
         refresh();
       },
-      okText: t("common.remove"),
-      cancelText: t("common.cancel"),
+      okText: t('common.remove'),
+      cancelText: t('common.cancel'),
       okButtonProps: {
         danger: true,
       },
@@ -38,7 +38,7 @@ function DeleteTaskModal({ id }: DeleteTaskModalProps) {
   }
 
   return (
-    <Tooltip title={t("task.deleteTask")}>
+    <Tooltip title={t('task.deleteTask')}>
       <Button
         danger
         type="text"

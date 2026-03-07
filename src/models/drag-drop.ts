@@ -1,9 +1,9 @@
-import type { Task } from "./task";
+import type { Task } from './task';
 
 export enum DropPosition {
-  BEFORE = "before",
-  AFTER = "after",
-  NONE = "none",
+  BEFORE = 'before',
+  AFTER = 'after',
+  NONE = 'none',
 }
 
 export interface DragItem {

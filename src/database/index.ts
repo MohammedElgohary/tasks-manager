@@ -1,4 +1,4 @@
-import dayjs from "dayjs";
+import dayjs from 'dayjs';
 import {
   type Task,
   type TaskInput,
@@ -6,13 +6,13 @@ import {
   type Analytics,
   TaskPriority,
   ImportMode,
-} from "@/models";
-import { v4 as uuidv4 } from "uuid";
+} from '@/models';
+import { v4 as uuidv4 } from 'uuid';
 
 /**
  * The key used to store the tasks in localStorage.
  */
-const TASK_KEY = "tasks-app-data";
+const TASK_KEY = 'tasks-app-data';
 
 /**
  * TaskDB is a class that manages the tasks in the database.
@@ -89,7 +89,7 @@ class TaskDB {
         // Overdue
         if (
           t.dueDate &&
-          dayjs(t.dueDate).isBefore(now, "day") &&
+          dayjs(t.dueDate).isBefore(now, 'day') &&
           t.status !== TaskStatus.COMPLETED
         ) {
           acc.overdue += 1;
@@ -111,7 +111,7 @@ class TaskDB {
           [TaskPriority.LOW]: 0,
         },
         overdue: 0,
-      } as Analytics,
+      } as Analytics
     );
 
     const total = this.tasks.length;
